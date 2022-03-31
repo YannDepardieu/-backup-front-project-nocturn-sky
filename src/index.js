@@ -1,8 +1,7 @@
-// == Import : npm
 import { render } from 'react-dom';
 
-// == Import : local
-// Composants
+
+// Composant
 import App from 'src/components/App';
 
 // == Render
