@@ -40,3 +40,57 @@ letter-spacing: 0.05rem;
 padding: 0 2rem;
 line-height: 1.2rem;
 }
+
+.container-arrow{
+  margin-top: 19rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// p {
+//   color: #fff;
+//   font-weight: bold;
+//   margin: 0 0 20px;
+// }
+
+
+/* Arrow & Hover Animation */
+#more-arrows {
+width: 75px;
+height: 65px;
+
+&:hover {
+  
+  polygon {
+    fill: #FFF;
+    transition: all .2s ease-out;
+
+    &.arrow-bottom {
+      transform: translateY(-18px);
+    }
+
+    &.arrow-top {
+      transform: translateY(18px);
+    }
+    
+  }
+
+}
+
+}
+
+polygon {
+fill: #FFF;
+transition: all .2s ease-out;
+  
+&.arrow-middle {
+  opacity: 0.75;
+}
+
+&.arrow-top {
+  opacity: 0.5
+}
+ 
+}
