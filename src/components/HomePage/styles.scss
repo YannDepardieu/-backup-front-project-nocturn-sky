@@ -1,5 +1,7 @@
 .home-page-container{
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .home-page-title-container{
@@ -14,4 +16,27 @@
   color:#b1a7cf;
   letter-spacing: 0.10rem;
   text-shadow: #b1a7cf 1px 0 7px;
+}
+
+.home-page-welcome-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 8rem ;
+  height: 15rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(14, 6, 44, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.home-page-welcome{
+color: #9fa4d6;
+font-weight: bold;
+letter-spacing: 0.05rem;
+padding: 0 2rem;
+line-height: 1.2rem;
 }
