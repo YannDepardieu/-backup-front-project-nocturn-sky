@@ -1,12 +1,10 @@
 .home-page-container{
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 }
 
 .home-page-title-container{
   margin-top: 2.5rem;
-
 }
 
 .home-page-title{
@@ -14,31 +12,36 @@
   font-size: 4.7rem;
   font-weight: bold;
   color:#b1a7cf;
-  letter-spacing: 0.10rem;
-  text-shadow: #b1a7cf 1px 0 7px;
+  letter-spacing: 0.12rem;
+  text-shadow: #b1a7cf 2px 1px 12px;
+  // text-shadow: 5px 5px 15px #b1a7cf,
+  //   -5px 5px 15px #77708b,
+  //   -5px -5px 15px #77708b,
+  //   5px -5px 15px #77708b;
 }
 
 .home-page-welcome-container{
+  height: 15rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   margin-top: 8rem ;
-  height: 15rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   border:1px solid rgba(14, 6, 44, 0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  overflow: auto;
 }
 
 .home-page-welcome{
 color: #9fa4d6;
 font-weight: bold;
 letter-spacing: 0.05rem;
-padding: 0 2rem;
-line-height: 1.2rem;
+padding: 3rem 3rem;
+line-height: 1.4rem;
 }
 
 .container-arrow{
@@ -55,17 +58,18 @@ line-height: 1.2rem;
 //   margin: 0 0 20px;
 // }
 
-
 /* Arrow & Hover Animation */
 #more-arrows {
 width: 75px;
 height: 65px;
 
+
 &:hover {
   
   polygon {
-    fill: #FFF;
+    fill: #ad98eb77;
     transition: all .2s ease-out;
+  
 
     &.arrow-bottom {
       transform: translateY(-18px);
@@ -82,7 +86,7 @@ height: 65px;
 }
 
 polygon {
-fill: #FFF;
+fill: rgba(255, 255, 255, 0.247);
 transition: all .2s ease-out;
   
 &.arrow-middle {
