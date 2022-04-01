@@ -1,13 +1,15 @@
 // == Import
 import './styles.scss';
 import HomePage from '../HomePage';
+import TodayMyth from '../TodayMyth'
 //import { Routes, Route } from 'react-router-dom';
 
 // == Composant App
 function App() {
   return (
     <div className="app">
-      <HomePage />
+      {/* HomePage /> */}
+      <TodayMyth />
 
     
       {/*On Gère les routes dans un second temps, d'abord créer chaque composant 
