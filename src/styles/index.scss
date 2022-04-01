@@ -3,7 +3,6 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  height: 100%;
   background: linear-gradient(to top,
       hsl(234.15, 80.39%, 10%) 0%,
       hsl(234.55, 78.79%, 10.23%) 8.1%,
@@ -22,7 +21,7 @@ body {
       hsl(254.85, 53.2%, 24.92%) 91.9%,
       hsl(255, 53.13%, 25.1%) 100%);
   background-repeat:no-repeat;
-  background-attachment: fixed;
+  background-attachment:fixed;
 };
   
  

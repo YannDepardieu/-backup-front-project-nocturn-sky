@@ -1,7 +1,10 @@
-// .myth-page-container{
-//   display: flex;
-//   flex-direction: column;
-// }
+.myth-page-container{ 
+  // width: 100vw;
+  // height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: pink 5px solid;
+}
 
 .myth-page-title-container{
   margin-top: 2.5rem;
@@ -23,6 +26,8 @@
 .myth-page-paragraph-container{
   height: 20rem;
   width: 50rem;
+  position: relative;
+  left: 0vw;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
