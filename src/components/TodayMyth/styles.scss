@@ -13,9 +13,9 @@
   font-family: "Montserrat", sans-serif;
   font-size: 4rem;
   font-weight: bold;
-  color: #c0b6dc;
+  color: var(--color-lilac);
   letter-spacing: 0.12rem;
-  text-shadow: #b1a7cf 2px 1px 12px;
+  text-shadow: var(--color-lilac-2) 2px 1px 12px;
   // text-shadow: 5px 5px 15px #b1a7cf,
   //   -5px 5px 15px #77708b,
   //   -5px -5px 15px #77708b,
@@ -86,9 +86,9 @@
   border: 1px solid sandybrown;
   font-size: 2rem;
   font-weight: bold;
-  color: #b1a7cf;
+  color: var(--color-lilac-2);
   letter-spacing: 0.12rem;
-  text-shadow: #b1a7cf 2px 1px 6px;
+  text-shadow: var(--color-lilac-2) 2px 1px 6px;
 }
 
 // p {
@@ -104,7 +104,7 @@
 
   &:hover {
     polygon {
-      fill: #ad98eb77;
+      fill: var(--color-lilac-transp);
       transition: all 0.2s ease-out;
 
       &.arrow-bottom {
@@ -119,7 +119,7 @@
 }
 
 polygon {
-  fill: rgba(255, 255, 255, 0.247);
+  fill: var(--color-lilac-transp-2);
   transition: all 0.2s ease-out;
 
   &.arrow-middle {
