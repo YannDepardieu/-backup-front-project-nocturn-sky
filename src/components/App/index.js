@@ -8,8 +8,8 @@ import TodayMyth from '../TodayMyth'
 function App() {
   return (
     <div className="app">
-      {/* HomePage /> */}
-      <TodayMyth />
+      <HomePage /> 
+     {/*  <TodayMyth /> */}
 
     
       {/*On Gère les routes dans un second temps, d'abord créer chaque composant 
