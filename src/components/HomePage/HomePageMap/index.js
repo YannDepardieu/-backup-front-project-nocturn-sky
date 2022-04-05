@@ -1,14 +1,14 @@
-import Form from './Form';
-// import Map from './Map';
+import Form from "./Form";
+import Map from "./Map";
 
-import './HomePageMap.scss';
+import "./HomePageMap.scss";
 
 const HomePageMap = () => {
-    return (
-        <>
-            <Form />
-        </>
-    );
+  return (
+    <>
+      <Form />
+    </>
+  );
 };
 
 export default HomePageMap;
