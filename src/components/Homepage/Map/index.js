@@ -1,6 +1,6 @@
 import Form from './Form';
 // import Map from './Map';
-import ArrowDown from '../ArrowDown';
+import ArrowDown from '../../ArrowDown';
 import './HomePageMap.scss';
 
 

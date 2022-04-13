@@ -1,0 +1,23 @@
+@mixin container {
+  // width: 80rem;
+  max-width: calc(100% - 1rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin card {
+  @include container;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 60rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .1),
+    rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(14, 6, 44, .18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, .37);
+}

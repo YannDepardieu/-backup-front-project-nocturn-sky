@@ -1,5 +1,6 @@
 @use 'reset';
 @use 'vars';
+@import 'mixins';
 
 body,
 html {
@@ -35,20 +36,23 @@ body {
 };
 
 .container {
-  // width: 80rem;
-  max-width: calc(100% - 1rem);
-  margin-left: auto;
-  margin-right: auto;
+  @include container;
 }
 
-/* 
-  // or you can import your own font
-  @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
-  }
+.Main {
+  @include container;
+}
 
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-*/
+.Block {
+  @include card;
+}
+
+.Title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4.7rem;
+  font-weight: bold;
+  color: #b1a7cf;
+  letter-spacing: .12rem;
+  text-shadow: #b1a7cf 2px 1px 12px;
+  text-align: center;
+}

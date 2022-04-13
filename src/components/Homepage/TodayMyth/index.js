@@ -1,6 +1,6 @@
 import "./styles.scss";
 
-import ArrowDown from "../ArrowDown";
+import ArrowDown from "../../ArrowDown";
 
 function TodayMyth() {
   return (
