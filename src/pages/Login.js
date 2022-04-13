@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import authContext from '../contexts/AuthContext';
 
 import { login } from '../utils/fetchApi';
 import { filterError } from '../utils/filterError';
@@ -8,13 +9,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const onSuccess = (data) => {
+  const {
+    isConnected,
+    connectUser
+  } = useContext(authContext);
+
+  console.log(isConnected);
+
+  const onSuccess = (_data) => {
     setEmail('');
     setPassword('');
 
-    alert('Connexion OK, il manque un JWT et ce sera parfait !');
+    connectUser('todo:JWT');
 
-    console.log(data);
+    alert('Connexion OK, il manque un JWT et ce sera parfait !');
   };
 
   const onFail = (error) => {

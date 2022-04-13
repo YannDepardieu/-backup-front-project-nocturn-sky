@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
+import authContext from "../../contexts/AuthContext";
 
 import { BiUserCircle } from 'react-icons/bi';
 
@@ -8,6 +9,7 @@ import './Header.scss';
 
 function Header () {
   const [menuOpened, setMenuOpened] = useState(false);
+  const { isConnected } = useContext(authContext);
 
   const closeMenu = () => {
     setMenuOpened(false);
@@ -51,8 +53,13 @@ function Header () {
                 )
               }
             >
-              <li className="Header-Menu-Item"><a href="">S'inscrire</a></li>
-              <li className="Header-Menu-Item"><a href="">Se déconnecter</a></li>
+              {/* Liens visibles uniquement si l'utilisateur est déconnecté */}
+              {!isConnected && (
+                <>                
+                  <li className="Header-Menu-Item"><a href="">S'inscrire</a></li>
+                  <li className="Header-Menu-Item"><a href="">Se déconnecter</a></li>
+                </>
+              )}
             </ul>
           </div>
         </div>
