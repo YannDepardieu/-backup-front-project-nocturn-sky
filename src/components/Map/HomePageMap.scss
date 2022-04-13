@@ -1,0 +1,40 @@
+.HomePage-InteractiveMap {
+    &-Form {
+        width: 60rem; // 60rem * 16px = 960px
+        max-width: calc(100vw - 1rem); // 100% de la largeur de la fenêtre - 1rem (1rem = 16px)
+        margin: 2rem auto;
+        display: flex;
+        align-items: stretch;
+
+        input,
+        button {
+            height: 1.5rem;
+        }
+
+        &-row {
+            display: flex;
+            align-items: stretch;
+        }
+
+        &-left,
+        &-right {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+
+        &-left {
+            input {
+                &[type="text"] {
+                    width: 100%;
+                }
+                &[type="datetime-local"] {
+                    width: 50%;
+                }
+            }
+            button {
+                width: 50%;
+            }
+        }
+    }
+}

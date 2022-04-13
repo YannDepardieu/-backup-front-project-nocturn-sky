@@ -1,0 +1,101 @@
+.Header {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100vw;
+  background: #000;
+  color: #fff;
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-Left,
+  &-Right {
+    display: flex;
+    align-items: center;
+  }
+
+  &-Right {
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  &-Search {
+    position: relative;
+    width: 240px;
+    margin: 0 2rem;
+
+    &-Label {
+      position: absolute;
+      left: .75rem;
+      top: .75rem;
+      opacity: 1;
+      transition: .25s cubic-bezier(0.785, 0.135, 0.15, 0.86) opacity;
+    }
+
+    &-Input {
+      border: none;
+      border-radius: 99rem;
+      padding: .75rem;
+      width: 100%;
+      background-color: #333;
+    }
+
+    &-Input:focus ~ &-Label {
+      opacity: 0;
+    }
+  }
+
+  &-Nav {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin: 0 1rem;
+    }
+  }
+
+  &-Menu {
+    &-Toggle {
+      display: block;
+      margin-right: 1rem;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    &-Container {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      right: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, .5);
+      padding: 1rem;
+      min-width: 160px;
+      border-radius: 0 0 0 1rem;
+      opacity: 0;
+      transform: translateY(50%) translateX(100%);
+      pointer-events: none;
+      transition:
+        .25s cubic-bezier(0.785, 0.135, 0.15, 0.86) opacity,
+        .25s cubic-bezier(0.785, 0.135, 0.15, 0.86) transform;
+
+      &--opened {
+        opacity: 1;
+        transform: translateY(50%) translateX(0);
+        pointer-events: all;
+      }
+    }
+
+    &-Item {
+      margin: .75rem 0;
+      font-weight: 600;
+    }
+  }
+}
