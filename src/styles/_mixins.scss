@@ -6,7 +6,7 @@
 }
 
 @mixin paragraph {
-  color: #9fa4d6;
+  color: var(--color-lilac-2);
   font-weight: bold;
   letter-spacing: .05rem;
   padding: 3rem;
@@ -28,4 +28,24 @@
   border-radius: 20px;
   border: 1px solid rgba(14, 6, 44, .18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, .37);
+}
+
+@mixin input {
+  background-color: #fff;
+  border: none;
+  border-radius: 99rem;
+  padding: .75rem;
+  margin: .125rem;
+}
+
+@mixin button {
+  @include input;
+
+  background-color: var(--color-lilac-2);
+  font-weight: 600;
+  transition: .2s cubic-bezier(0.785, 0.135, 0.15, 0.86) background-color;
+
+  &:hover {
+    background-color: var(--color-lilac);
+  }
 }
