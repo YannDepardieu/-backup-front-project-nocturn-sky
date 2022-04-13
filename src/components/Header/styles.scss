@@ -70,17 +70,17 @@
     }
 
     &-Container {
-      position: absolute;
+      position: fixed;
       display: flex;
       flex-direction: column;
       right: 0;
-      bottom: 0;
+      top: 0;
       background-color: rgba(0, 0, 0, .5);
       padding: 1rem;
       min-width: 160px;
       border-radius: 0 0 0 1rem;
       opacity: 0;
-      transform: translateY(100%) translateX(100%);
+      transform: translateY(50%) translateX(100%);
       pointer-events: none;
       transition:
         .25s cubic-bezier(0.785, 0.135, 0.15, 0.86) opacity,
@@ -88,7 +88,7 @@
 
       &--opened {
         opacity: 1;
-        transform: translateY(100%) translateX(0);
+        transform: translateY(50%) translateX(0);
         pointer-events: all;
       }
     }
