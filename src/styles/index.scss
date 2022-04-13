@@ -78,18 +78,19 @@ body {
 }
 
 .Title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 4.7rem;
-  font-weight: 600;
-  color: var(--color-lilac-2);
-  letter-spacing: .12rem;
-  text-shadow: var(--color-lilac-2) 2px 1px 12px;
-  text-align: center;
+  @include title;
 
   &--small {
     font-size: 2rem;
     text-shadow: var(--color-lilac-2) 2px 1px 6px;
   }
+}
+
+.Subtitle {
+  @include title;
+
+  font-size: 1.5rem;
+  font-style: italic;
 }
 
 .Form {

@@ -1,37 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { fetchContentEntity } from '../../utils/fetchApi';
 //import Hero from '../Hero';
 //import TodayMyth from '../TodayMyth';
 //import HomePageMap from '../Map';
-import {NavLink} from "react-router-dom";
+// import {NavLink} from "react-router-dom";
 import {
   AiOutlineCloseCircle,
 } from 'react-icons/ai';
 
-import myths from '../../data/myths';
+// import myths from '../../data/myths';
 
 import './styles.scss';
 
 function Myths() {
-  const [openedMyths, setOpenedMyths] = useState(null);
+  const [myths, setMyths] = useState([]);
+  const [openedMyth, setOpenedMyth] = useState(null);
 
+  useEffect(()=> {
+    fetchContentEntity('myth', setMyths);
+  }, []);
   return (
     <div className="myths-page-container">
-      <h2>Liste des Myths</h2>       
+      <h2 className="Title">Liste des Myths</h2>       
       
       <ul className="myths-container">
-        {myths.map((myths, index) => (          
+        {myths.map((myth, index) => (          
           <li
             key={`myths-item--${index}`}
             className="myths-item"
-            onClick={() => setOpenedMyths(myths)}
+            onClick={() => setOpenedMyth(myth)}
           >
             <img
               className="myths-item-image"
-              src={myths.image}
+              /* Changer par image name !!! */
+              src={`https://picsum.photos/200?=${index}`}
             />
     
             <strong className="myths-item-name">
-              {myths.name}
+              {myth.name}
             </strong>
           </li>
         ))}
@@ -52,7 +58,10 @@ function Myths() {
                 className="myths-modal-close"
                 onClick={() => setOpenedMyths(null)}
               />
-              <img src={openedMyths.image} alt="" />
+              <img src={openedMyths.image} alt={openedMyth.name} />
+              <div className='Myth-Description'>
+
+              </div>
               
             </div>
           </div>

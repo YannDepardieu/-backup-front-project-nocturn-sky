@@ -53,3 +53,13 @@
     background-color: var(--color-lilac);
   }
 }
+
+@mixin title {  
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4.7rem;
+  font-weight: 600;
+  color: var(--color-lilac-2);
+  letter-spacing: .12rem;
+  text-shadow: var(--color-lilac-2) 2px 1px 12px;
+  text-align: center;
+}

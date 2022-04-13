@@ -1,6 +1,6 @@
 import Hero from '../components/Homepage/Hero';
 import TodayMyth from '../components/Homepage/TodayMyth';
-import HomePageMap from '../components/Homepage/Map';
+import Map from '../components/Homepage/Map';
 
 import './Homepage.scss';
 
@@ -9,7 +9,7 @@ const Homepage = () => {
     <main className="Main Homepage">
       <Hero />
       <TodayMyth />
-      <HomePageMap/>
+      <Map />
     </main>
   );
 }

@@ -55,9 +55,21 @@ function Header () {
             >
               {/* Liens visibles uniquement si l'utilisateur est déconnecté */}
               {!isConnected && (
-                <>                
-                  <li className="Header-Menu-Item"><a href="">S'inscrire</a></li>
-                  <li className="Header-Menu-Item"><a href="">Se déconnecter</a></li>
+                <>
+                  <li className="Header-Menu-Item">
+                    <NavLink to="/signup">S'inscrire</NavLink>
+                  </li>
+                  <li className="Header-Menu-Item">
+                    <NavLink to="/login">Se connecter</NavLink>
+                  </li>
+                </>
+              )}
+              {/* Liens visibles uniquement si l'utilisateur est connecté */}
+              {isConnected && (
+                <>
+                  <li className="Header-Menu-Item">
+                    Se déconnecter
+                  </li>
                 </>
               )}
             </ul>

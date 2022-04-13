@@ -9,20 +9,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const {
-    isConnected,
-    connectUser
-  } = useContext(authContext);
+  const { connectUser } = useContext(authContext);
 
-  console.log(isConnected);
-
-  const onSuccess = (_data) => {
+  const onSuccess = (authorization) => {
     setEmail('');
     setPassword('');
+    setErrorMessage('');
 
-    connectUser('todo:JWT');
-
-    alert('Connexion OK, il manque un JWT et ce sera parfait !');
+    connectUser(authorization.match(/Bearer\s(.*)/)[1]);
   };
 
   const onFail = (error) => {
@@ -42,6 +36,8 @@ const Login = () => {
 
   return (
     <main className="Main Login">
+      <h1 className="Title">Connexion</h1>
+
       <form
         onSubmit={handleSubmit}
         className="Form Block Block--small"
@@ -83,7 +79,7 @@ const Login = () => {
         </button>
       </form>
     </main>
-  )
+  );
 };
 
 export default Login;
