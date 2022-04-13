@@ -45,6 +45,10 @@ body {
 
 .Block {
   @include card;
+
+  &--small {
+    max-width: 24rem;
+  }
 }
 
 .Section {
@@ -86,4 +90,37 @@ body {
     font-size: 2rem;
     text-shadow: var(--color-lilac-2) 2px 1px 6px;
   }
+}
+
+.Form {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .Fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .Button,
+  .Input {
+    width: 100%;
+  }
+
+  .Label {
+    margin: .25rem;
+    font-weight: 600;
+    color: var(--color-lilac-2)
+  }
+}
+
+.Error {
+  color: #F47174;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
