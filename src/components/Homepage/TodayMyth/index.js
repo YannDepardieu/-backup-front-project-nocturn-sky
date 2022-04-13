@@ -1,21 +1,19 @@
-import "./styles.scss";
+import ArrowDown from '../../ArrowDown';
 
-import ArrowDown from "../../ArrowDown";
+import './TodayMyth.scss';
 
-function TodayMyth() {
+const TodayMyth = () => {
   return (
-    <section id="Myth" className="myth-page-container Section">
-      <div className="myth-page-title-container">
-        <h1 className="myth-page-title">Mythe du jour</h1>
-      </div>
+    <section id="Myth" className="Section Myth">
+      <h1 className="Title">Mythe du jour</h1>
 
-      <div className="myth-page-paragraph-container">
-        <div className="myth-page-picture">
-          <img src="" alt="image constellation" />
-          <h2 className="myth-page-paragraph-title">Orion</h2>
-        </div>
+      <div className="Block Myth-Block">
+        <figure className="Myth-Picture">
+          <img src="https://picsum.photos/200" alt="image constellation" />
+          <figcaption className="Title Title--small">Orion</figcaption>
+        </figure>
 
-        <p className="myth-page-paragraph">
+        <p className="Myth-Description">
           L'histoire du mythe Orion. lor Vitae numquam quibusdam quas tempora
           similique eligendi, molestiae iusto recusandae quasi, unde, enim qui
           ipsum?
@@ -25,6 +23,6 @@ function TodayMyth() {
       <ArrowDown href="#Map" />
     </section>
   );
-}
+};
 
 export default TodayMyth;

@@ -47,12 +47,24 @@ body {
   @include card;
 }
 
+.Section {
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  min-height: calc(100vh - 4rem);
+}
+
 .Title {
   font-family: 'Montserrat', sans-serif;
   font-size: 4.7rem;
-  font-weight: bold;
-  color: #b1a7cf;
+  font-weight: 600;
+  color: var(--color-lilac-2);
   letter-spacing: .12rem;
-  text-shadow: #b1a7cf 2px 1px 12px;
+  text-shadow: var(--color-lilac-2) 2px 1px 12px;
   text-align: center;
+
+  &--small {
+    font-size: 2rem;
+    text-shadow: var(--color-lilac-2) 2px 1px 6px;
+  }
 }

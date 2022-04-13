@@ -5,11 +5,19 @@
   margin-right: auto;
 }
 
+@mixin paragraph {
+  color: #9fa4d6;
+  font-weight: bold;
+  letter-spacing: .05rem;
+  padding: 3rem;
+  line-height: 1.4rem;
+}
+
 @mixin card {
   @include container;
 
+  padding: 2rem;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   max-width: 60rem;
