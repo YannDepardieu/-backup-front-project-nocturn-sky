@@ -36,6 +36,10 @@
   border-radius: 99rem;
   padding: .75rem;
   margin: .125rem;
+
+  &::placeholder {
+    font-style: italic;
+  }
 }
 
 @mixin button {
