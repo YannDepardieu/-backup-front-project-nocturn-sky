@@ -1,12 +1,10 @@
-import {NavLink} from "react-router-dom";
-//import Navbar from "./HeaderMenu/Navbar";
-import './styles.scss';
-//import './index.css';
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { BiUserCircle } from 'react-icons/bi';
+
+import './Header.scss';
 
 function Header () {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -21,12 +19,14 @@ function Header () {
 
   return (
     <header className="Header">
-      <div className="container">
+      <div className="Container">
         <div className="Header-Left">
-          <img className="Header-Logo" src="https://picsum.photos/60?random=1" />
+          <NavLink to="/">
+            <img className="Header-Logo" src="https://picsum.photos/60?random=1" />
+          </NavLink>
           <label className="Header-Search" htmlFor="header-search">
             <input
-              className="Header-Search-Input"
+              className="Input Input--dark"
               id="header-search"
               placeholder="Orion, andromède..."
             />

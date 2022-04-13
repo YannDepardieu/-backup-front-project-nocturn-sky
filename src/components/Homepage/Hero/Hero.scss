@@ -1,0 +1,15 @@
+@import '../../../styles/mixins';
+
+.Homepage .Hero {
+  .Title {
+    margin: 4rem;
+  }
+
+  .Block {
+    color: #9fa4d6;
+    font-weight: 600;
+    letter-spacing: .05rem;
+    padding: 3rem;
+    line-height: 1.4rem;
+  }
+}
