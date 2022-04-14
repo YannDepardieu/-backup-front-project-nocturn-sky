@@ -5,11 +5,10 @@
     "browser": true
   },
   "rules": {
-    
-    "parserOptions": { 
-    "requireConfigFile" : "false",
-    "babelOptions": { "configFile": "./.babelrc", }
-  }, 
+    "parserOptions": {
+      "requireConfigFile": "false",
+      "babelOptions": { "configFile": "./.babelrc" }
+    },
     "brace-style": ["error", "stroustrup"],
     "no-param-reassign": [
       "error",
