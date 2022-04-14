@@ -1,67 +1,26 @@
-import { useEffect, useState } from "react";
-import { fetchContentEntity } from "../../utils/fetchApi";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useContext } from "react";
+import { baseURL } from "../../../utils/axios";
 
-// import myths from '../../data/myths';
+import mythContext from "../../../contexts/MythContext";
 
-import "./styles.scss";
+import "./Myth.scss";
 
-function Myths() {
-  const [myths, setMyths] = useState([]);
-  const [openedMyth, setOpenedMyth] = useState(null);
+const Myths = ({ myth }) => {
+  const { setOpenedMyth } = useContext(mythContext);
 
-  useEffect(() => {
-    fetchContentEntity("myth", setMyths);
-  }, []);
   return (
-    <div className="myths-page-container">
-      <h2 className="Title">Liste des Myths</h2>
+    <li className="Myths-Item" onClick={() => setOpenedMyth(myth)}>
+      <img
+        className="Myths-Item-Image"
+        src={`${baseURL}${myth.img_url}`}
+        onError={({ currentTarget }) =>
+          (currentTarget.src = "https://www.fillmurray.com/200/350")
+        }
+      />
 
-      <ul className="myths-container">
-        {myths.map((myth, index) => (
-          <li
-            key={`myths-item--${index}`}
-            className="myths-item"
-            onClick={() => setOpenedMyth(myth)}
-          >
-            <img
-              className="myths-item-image"
-              /* Changer par image name !!! */
-              src={`https://picsum.photos/200?=${index}`}
-            />
-
-            <strong className="myths-item-name">{myth.name}</strong>
-          </li>
-        ))}
-      </ul>
-
-      {openedMyth && (
-        <div
-          className="myths-modal"
-          onClick={({ target, currentTarget }) => {
-            if (currentTarget === target) {
-              setOpenedMyth(null);
-            }
-          }}
-        >
-          <div className="myths-modal-container">
-            <AiOutlineCloseCircle
-              className="myths-modal-close"
-              onClick={() => setOpenedMyth(null)}
-            />
-            <img src={openedMyth.image} alt={openedMyth.name} />
-            <h2 className="Title Title--small">{openedMyth.name}</h2>
-
-            <div className="Myth-Description">
-              {Boolean(openedMyth.story) && <p>{openedMyth.story}</p>}
-              {Boolean(openedMyth.spotting) && <p>{openedMyth.spotting}</p>}
-              {Boolean(openedMyth.legend) && <p>{openedMyth.legend}</p>}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+      <strong className="Myths-Item-Name">{myth.name}</strong>
+    </li>
   );
-}
+};
 
 export default Myths;
