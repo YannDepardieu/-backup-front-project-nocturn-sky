@@ -7,6 +7,7 @@ import {
 
 import constellationContext from '../../../contexts/ConstellationContext';
 import authContext from '../../../contexts/AuthContext';
+import { baseURL } from '../../../utils/axios';
 
 import './Modal.scss';
 
@@ -40,7 +41,8 @@ const ConstellationModal = () => {
 
         <div className="Constellations-Modal-Details">
           <img
-            src={`https://picsum.photos/200`}
+            src={`${baseURL}/img/${openedConstellation.latin_name.toLowerCase().slice(0, 3)}.png`}
+            onError={({ currentTarget }) => currentTarget.src = 'https://www.fillmurray.com/200/350'}
             alt={openedConstellation.name}
             className="Constellations-Modal-Details-Image"
           />
