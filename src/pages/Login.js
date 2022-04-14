@@ -31,6 +31,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setErrorMessage('');
     login(email, password, onSuccess, onFail);
   };
 

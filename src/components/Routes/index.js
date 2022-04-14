@@ -18,7 +18,7 @@ const Routes = () => {
       {/*On Gère les routes dans un second temps, d'abord créer chaque composant*/}
       <RoutesContainer>
         <Route path="/" element={<Homepage />} />
-        <Route path="/Constellations" element={<Constellations />} />
+        <Route path="/constellations" element={<Constellations />} />
 
         {/* Routes protégées par un login */}
         <Route element={<AuthenticatedRoute redirectPath="/login" />}>
