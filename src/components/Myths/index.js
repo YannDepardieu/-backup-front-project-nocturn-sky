@@ -1,30 +1,24 @@
-import { useEffect, useState } from 'react';
-import { fetchContentEntity } from '../../utils/fetchApi';
-//import Hero from '../Hero';
-//import TodayMyth from '../TodayMyth';
-//import HomePageMap from '../Map';
-// import {NavLink} from "react-router-dom";
-import {
-  AiOutlineCloseCircle,
-} from 'react-icons/ai';
+import { useEffect, useState } from "react";
+import { fetchContentEntity } from "../../utils/fetchApi";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 // import myths from '../../data/myths';
 
-import './styles.scss';
+import "./styles.scss";
 
 function Myths() {
   const [myths, setMyths] = useState([]);
   const [openedMyth, setOpenedMyth] = useState(null);
 
-  useEffect(()=> {
-    fetchContentEntity('myth', setMyths);
+  useEffect(() => {
+    fetchContentEntity("myth", setMyths);
   }, []);
   return (
     <div className="myths-page-container">
-      <h2 className="Title">Liste des Myths</h2>       
-      
+      <h2 className="Title">Liste des Myths</h2>
+
       <ul className="myths-container">
-        {myths.map((myth, index) => (          
+        {myths.map((myth, index) => (
           <li
             key={`myths-item--${index}`}
             className="myths-item"
@@ -35,38 +29,37 @@ function Myths() {
               /* Changer par image name !!! */
               src={`https://picsum.photos/200?=${index}`}
             />
-    
-            <strong className="myths-item-name">
-              {myth.name}
-            </strong>
+
+            <strong className="myths-item-name">{myth.name}</strong>
           </li>
         ))}
       </ul>
 
-      {
-        openedMyths && (
-          <div
-            className="myths-modal"
-            onClick={({ target, currentTarget }) => {
-              if (currentTarget === target) {
-                setOpenedMyths(null);
-              }
-            }}
-          >
-            <div className="myths-modal-container">
-              <AiOutlineCloseCircle
-                className="myths-modal-close"
-                onClick={() => setOpenedMyths(null)}
-              />
-              <img src={openedMyths.image} alt={openedMyth.name} />
-              <div className='Myth-Description'>
+      {openedMyth && (
+        <div
+          className="myths-modal"
+          onClick={({ target, currentTarget }) => {
+            if (currentTarget === target) {
+              setOpenedMyth(null);
+            }
+          }}
+        >
+          <div className="myths-modal-container">
+            <AiOutlineCloseCircle
+              className="myths-modal-close"
+              onClick={() => setOpenedMyth(null)}
+            />
+            <img src={openedMyth.image} alt={openedMyth.name} />
+            <h2 className="Title Title--small">{openedMyth.name}</h2>
 
-              </div>
-              
+            <div className="Myth-Description">
+              {Boolean(openedMyth.story) && <p>{openedMyth.story}</p>}
+              {Boolean(openedMyth.spotting) && <p>{openedMyth.spotting}</p>}
+              {Boolean(openedMyth.legend) && <p>{openedMyth.legend}</p>}
             </div>
           </div>
-        )
-      }
+        </div>
+      )}
     </div>
   );
 }
