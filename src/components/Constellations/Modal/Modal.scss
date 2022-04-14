@@ -56,6 +56,7 @@
   }
 
   &-Description {
+    max-height: calc(100% - 2rem);
     margin-left: 2rem;
     margin-right: -1rem;
     padding-right: 1rem;
@@ -72,6 +73,18 @@
     .Subtitle {
       text-align: left;
       margin-bottom: .25rem;
+    }
+  }
+
+  &-Favorite {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+
+    &--favorited {
+      color: red;
     }
   }
 }
