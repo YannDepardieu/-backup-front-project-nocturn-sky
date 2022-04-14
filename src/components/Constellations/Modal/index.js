@@ -1,14 +1,21 @@
-import { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   AiOutlineCloseCircle,
+  AiFillHeart,
+  AiOutlineHeart,
 } from 'react-icons/ai';
 
 import constellationContext from '../../../contexts/ConstellationContext';
+import authContext from '../../../contexts/AuthContext';
 
 import './Modal.scss';
 
 const ConstellationModal = () => {
+  const [favorited, setFavorited] = useState(false);
+
+  const { isConnected } = useContext(authContext);
   const { openedConstellation, setOpenedConstellation } = useContext(constellationContext);
+
 
   // Si aucune constellation n'est ouverte (cliquée pour la modal),
   // on return null pour ne pas afficher la modal.
@@ -61,6 +68,19 @@ const ConstellationModal = () => {
             </>
           )}
         </div>
+
+        {(isConnected && favorited) && (
+          <AiFillHeart
+            onClick={() => setFavorited(!favorited)}
+            className="Constellations-Modal-Favorite Constellations-Modal-Favorite--favorited"
+          />
+        )}
+        {(isConnected && !favorited) && (
+          <AiOutlineHeart
+            onClick={() => setFavorited(!favorited)}
+            className="Constellations-Modal-Favorite"
+          />
+        )}
       </div>
     </div>
   );
