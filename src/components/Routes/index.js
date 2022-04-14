@@ -11,7 +11,7 @@ import Header from "../Header";
 import Homepage from "../../pages/Homepage";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
-import Constellations from "../Constellations";
+import Constellations from "../../pages/Constellations";
 import Myths from "../Myths";
 
 const Routes = () => {
