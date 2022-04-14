@@ -1,7 +1,6 @@
 @import '../../styles/mixins';
 
 .Header {
-
   z-index: 10;
   position: sticky;
   top: 0;
@@ -17,6 +16,40 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &-Search {
+    position: relative;
+
+    &-Options {
+      position: absolute;
+      opacity: 0;
+      bottom: 0;
+      left: 1rem;
+      width: calc(100% - 1rem);
+      transform: translateY(100%);
+      background: #000;
+      border-radius: 0 0 1rem 1rem;
+      transition: .2s cubic-bezier(0.785, 0.135, 0.15, 0.86) opacity;
+      overflow: auto;
+      max-height: 10rem;
+    }
+
+    &-Option {
+      padding: .5rem 1rem;
+      margin: .125rem 0;
+      background: transparent;
+      transition: .2s cubic-bezier(0.785, 0.135, 0.15, 0.86) background;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(#fff, .125);
+      }
+    }
+
+    .Input:focus + &-Options {
+      opacity: 1;
+    }
   }
 
   &-Left,
@@ -81,6 +114,7 @@
     &-Item {
       margin: .75rem 0;
       font-weight: 600;
+      cursor: pointer;
     }
   }
 }

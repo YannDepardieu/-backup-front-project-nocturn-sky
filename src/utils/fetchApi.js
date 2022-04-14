@@ -71,6 +71,18 @@ export const fetchContentEntity = (
     });
 };
 
+export const fetchSearchOptions = (
+  saveSearchOptions,
+) => {
+  axios.get('/constellation/names')
+    .then(({ data }) => {
+      saveSearchOptions(data);
+    })
+    .catch(() => {
+
+    });
+};
+
 export const fetchApi = {
   login,
   signup,
