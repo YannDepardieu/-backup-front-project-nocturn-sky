@@ -193,12 +193,4 @@ class InteractiveMap extends Component {
   }
 }
 
-// const InteractiveMap = () => {
-//   return (
-//         <div className="Map-InteractiveMap">
-//           <div id="celestial-map"></div>
-//         </div>
-//   );
-// };
-
 export default InteractiveMap;

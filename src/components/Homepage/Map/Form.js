@@ -1,20 +1,24 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const Form = () => {
-  const [ address, setAddress ] = useState('');
-  const [ datetime, setDatetime ] = useState(new Date());
-  const [ locationError, setLocationError ] = useState(null);
-  const [ userCoords, setUserCoords ] = useState(null);
+  const [address, setAddress] = useState("");
+  const [datetime, setDatetime] = useState(new Date());
+  const [locationError, setLocationError] = useState(null);
+  const [userCoords, setUserCoords] = useState(null);
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (userPosition) => setUserCoords(userPosition.coords),
-        () => setLocationError(error.message)
+        () => {
+          console.log(userCoords);
+          setLocationError(error.message);
+        }
       );
-    }
-    else {
-      setLocationError('Votre navigateur ne permet pas de partager votre position.');
+    } else {
+      setLocationError(
+        "Votre navigateur ne permet pas de partager votre position."
+      );
     }
   };
 
@@ -41,31 +45,23 @@ const Form = () => {
             name="datetime"
             type="datetime-local"
             value={datetime}
-            onChange={({ currentTarget }) => setDatetime(currentTarget.value)}
+            onChange={({ currentTarget }) => {
+              setDatetime(currentTarget.value);
+              console.log(`date : ${currentTarget.value}`);
+            }}
           />
-          <button
-            className="Button"
-            onClick={getUserLocation}
-          >
+          <button className="Button" onClick={getUserLocation}>
             Position actuelle
           </button>
         </div>
       </div>
 
       <div className="Map-Form-right">
-        <button
-          className="Button"
-        >
-          Enregistrer ce lieu comme favori
-        </button>
-        <button
-          className="Button"
-        >
-          Enregistrer cet événement
-        </button>
+        <button className="Button">Enregistrer ce lieu comme favori</button>
+        <button className="Button">Enregistrer un événement</button>
       </div>
     </div>
   );
-}
+};
 
 export default Form;
