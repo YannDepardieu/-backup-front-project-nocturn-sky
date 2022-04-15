@@ -25,56 +25,56 @@ const MythModal = () => {
 
   return (
     <div
-      className="Constellations-Modal"
+      className="Myths-Modal"
       onClick={({ target, currentTarget }) => {
         if (currentTarget === target) {
-          setOpenedConstellation(null);
+          setOpenedMyth(null);
         }
       }}
     >
       <div className="Block">
         <AiOutlineCloseCircle
-          className="Constellations-Modal-Close"
-          onClick={() => setOpenedConstellation(null)}
+          className="Myths-Modal-Close"
+          onClick={() => setOpenedMyth(null)}
         />
 
-        <div className="Constellations-Modal-Details">
+        <div className="Myths-Modal-Details">
           <img
-            src={`${baseURL}/img/${openedConstellation.latin_name
+            src={`${baseURL}/img/${openedMyth.latin_name
               .toLowerCase()
               .slice(0, 3)}.png`}
             onError={({ currentTarget }) =>
               (currentTarget.src = "https://www.fillmurray.com/200/350")
             }
-            alt={openedConstellation.name}
-            className="Constellations-Modal-Details-Image"
+            alt={openedMyth.name}
+            className="Myths-Modal-Details-Image"
           />
-          <h2 className="Title Title--small">{openedConstellation.name}</h2>
-          <em className="Subtitle">{openedConstellation.latin_name}</em>
+          <h2 className="Title Title--small">{openedMyth.name}</h2>
+          <em className="Subtitle">{openedMyth.latin_name}</em>
         </div>
 
-        <div className="Constellations-Modal-Description">
-          {Boolean(openedConstellation.story) && (
+        <div className="Myths-Modal-Description">
+          {Boolean(openedMyth.story) && (
             <>
               <strong className="Subtitle">Son histoire</strong>
-              <p className="Constellations-Modal-Description-Paragraph">
-                {openedConstellation.story}
+              <p className="Myths-Modal-Description-Paragraph">
+                {openedMyth.story}
               </p>
             </>
           )}
-          {Boolean(openedConstellation.spotting) && (
+          {Boolean(openedMyth.spotting) && (
             <>
               <strong className="Subtitle">Sa découverte</strong>
-              <p className="Constellations-Modal-Description-Paragraph">
-                {openedConstellation.spotting}
+              <p className="Myths-Modal-Description-Paragraph">
+                {openedMyth.spotting}
               </p>
             </>
           )}
-          {Boolean(openedConstellation.myth) && (
+          {Boolean(openedMyth.myth) && (
             <>
               <strong className="Subtitle">Son mythe</strong>
-              <p className="Constellations-Modal-Description-Paragraph">
-                {openedConstellation.myth}
+              <p className="Myths-Modal-Description-Paragraph">
+                {openedMyth.myth}
               </p>
             </>
           )}
@@ -83,13 +83,13 @@ const MythModal = () => {
         {isConnected && favorited && (
           <AiFillHeart
             onClick={() => setFavorited(!favorited)}
-            className="Constellations-Modal-Favorite Constellations-Modal-Favorite--favorited"
+            className="Myths-Modal-Favorite Myths-Modal-Favorite--favorited"
           />
         )}
         {isConnected && !favorited && (
           <AiOutlineHeart
             onClick={() => setFavorited(!favorited)}
-            className="Constellations-Modal-Favorite"
+            className="Myths-Modal-Favorite"
           />
         )}
       </div>
@@ -97,4 +97,4 @@ const MythModal = () => {
   );
 };
 
-export default ConstellationModal;
+export default MythModal;

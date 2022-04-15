@@ -12,7 +12,7 @@ import Homepage from "../../pages/Homepage";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Constellations from "../../pages/Constellations";
-import Myths from "../Myths";
+import Myths from "../../pages/Myths";
 
 const Routes = () => {
   return (

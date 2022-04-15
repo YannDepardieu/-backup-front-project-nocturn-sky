@@ -1,7 +1,7 @@
 import { MythProvider } from "../contexts/MythContext";
 
 import MythsList from "../components/Myths/List";
-import MythModal from "../components/Myths/Modal";
+import MythsModal from "../components/Myths/Modal";
 
 import "./Myths.scss";
 
