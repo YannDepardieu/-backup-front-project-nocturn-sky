@@ -1,15 +1,29 @@
-@import '../../../styles/mixins';
+@import "../../../styles/mixins";
 
 .Homepage .Hero {
-  .Title {
-    margin: 4rem;
+  &-Title {
+    margin: 3.5rem;
   }
 
-  .Block {
+  &-Text {
     color: #9fa4d6;
-    font-weight: 600;
-    letter-spacing: .05rem;
+    letter-spacing: 0.05rem;
     padding: 3rem;
-    line-height: 1.4rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    position: absolute;
+    // margin-top: auto;
+    // margin-bottom: auto;
+    width: 50rem;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-Intro {
+      font-weight: 600;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      text-align: center;
+    }
   }
 }
