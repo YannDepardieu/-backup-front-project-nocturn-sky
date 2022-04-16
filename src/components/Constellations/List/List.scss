@@ -1,6 +1,7 @@
 .Constellations-List {
   max-width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
