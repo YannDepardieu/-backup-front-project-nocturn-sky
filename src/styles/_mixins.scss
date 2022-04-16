@@ -59,9 +59,25 @@
 @mixin title {
   font-family: "Montserrat", sans-serif;
   font-size: 4.7rem;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--color-lilac-2);
   letter-spacing: 0.12rem;
   text-shadow: var(--color-lilac-2) 1px 0.5px 8px;
   text-align: center;
+}
+
+@mixin subtitle {
+  @include title;
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+@mixin subtitle-2 {
+  @include title;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-violet-deep);
+  background-color: var(--color-lilac-light-transp);
+  border-radius: 20px;
+  // text-shadow: var(--color-lilac-2) 1px 0.5px 2px;
 }

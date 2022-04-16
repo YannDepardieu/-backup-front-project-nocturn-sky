@@ -12,32 +12,45 @@ const TodayMyth = () => {
     fetchRandomMyth(setRandomMyth);
   }, []);
 
-  const data = { ...randomMyth[0] };
-  const constellation = { ...data.constellation };
+  if (randomMyth.length === 0) {
+    return null;
+  }
+
+  // const data = { ...randomMyth[0] };
+  const constellation = randomMyth[0];
 
   return (
     <section id="Myth" className="Section Myth">
-      <h2 className="Title Myth-Title">Retrouvez les mythes</h2>
+      <h2 className="Section-Title">Retrouvez les mythes</h2>
 
       <div className="Block Myth-Block">
-        <figure className="Myth-Picture">
-          <img
-            src={`${baseURL}${constellation.img_url} `}
-            alt={`Constellation ${constellation.name} `}
-          />
-          <figcaption className="Title Title--small">
-            {constellation.name}
-          </figcaption>
-        </figure>
-        <div className="Myth-Description">
-          <h3 className="Myth-Description-Title">Mythe :</h3>
-          <p className="Myth-Description-Text">
-            D'origine {data.origin}, {data.legend}
-          </p>
-          <h3 className="Myth-Description-Title">Histoire :</h3>
-          <p className="Myth-Description-Text">{constellation.story}</p>
-          <h3 className="Myth-Description-Title">Répérage :</h3>
-          <p className="Myth-Description-Text">{constellation.spotting}</p>
+        <h3 className="Title Title--small Myth-Block-Title">
+          Constellation {constellation.constellation.name}
+        </h3>
+        <div className="Myth-Block-Container">
+          <figure className="Myth-Picture">
+            <img
+              src={`${baseURL}${constellation.constellation.img_url} `}
+              alt={`Constellation ${constellation.constellation.name} `}
+            />
+            <figcaption className="Title Title--small Myth-Picture-Title">
+              {constellation.constellation.latin_name}
+            </figcaption>
+          </figure>
+          <div className="Myth-Description">
+            <h3 className="Myth-Description-Title">Mythe :</h3>
+            <p className="Myth-Description-Text">
+              D'origine {constellation.origin}, {constellation.legend}
+            </p>
+            <h3 className="Myth-Description-Title">Histoire :</h3>
+            <p className="Myth-Description-Text">
+              {constellation.constellation.story}
+            </p>
+            <h3 className="Myth-Description-Title">Répérage :</h3>
+            <p className="Myth-Description-Text">
+              {constellation.constellation.spotting}
+            </p>
+          </div>
         </div>
       </div>
 

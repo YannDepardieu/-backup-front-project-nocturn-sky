@@ -58,6 +58,10 @@ body {
   padding-top: 6rem;
   padding-bottom: 6rem;
   min-height: calc(100vh - 4rem);
+
+  &-Title {
+    @include subtitle;
+  }
 }
 
 .Input {
