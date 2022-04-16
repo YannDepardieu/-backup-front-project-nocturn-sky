@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ArrowDown from "../../ArrowDown";
 import { baseURL } from "../../../utils/axios";
 import { fetchRandomMyth } from "../../../utils/fetchApi";
+import authContext from "../../../contexts/AuthContext";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 import "./TodayMyth.scss";
 
 const TodayMyth = () => {
   const [randomMyth, setRandomMyth] = useState([]);
+  const [favorited, setFavorited] = useState(false);
+  const { isConnected } = useContext(authContext);
 
   useEffect(() => {
     fetchRandomMyth(setRandomMyth);
@@ -51,6 +55,18 @@ const TodayMyth = () => {
               {constellation.constellation.spotting}
             </p>
           </div>
+          {isConnected && favorited && (
+            <AiFillHeart
+              onClick={() => setFavorited(!favorited)}
+              className="Detail-Modal-Favorite Detail-Modal-Favorite--favorited"
+            />
+          )}
+          {isConnected && !favorited && (
+            <AiOutlineHeart
+              onClick={() => setFavorited(!favorited)}
+              className="Detail-Modal-Favorite"
+            />
+          )}
         </div>
       </div>
 

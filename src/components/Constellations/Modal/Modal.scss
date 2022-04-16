@@ -11,7 +11,6 @@
   height: 100vh;
   padding: 2rem;
   max-width: 100%;
-  background: rgba(0, 0, 0, 0.25);
   z-index: 11;
 
   .Detail {
@@ -26,14 +25,15 @@
     }
 
     &-Block {
+      @include glass-effect;
       margin: 6rem auto;
       height: 26rem;
       overflow: scroll;
       display: block;
+      background: rgba(0, 0, 0, 0.25);
 
       // &-Block {
       //   position: relative;
-      //   background-color: #b1a7cfbe;
       //   border-radius: 1rem;
       //   max-width: 60rem;
       //   max-height: 100%;

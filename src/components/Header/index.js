@@ -1,18 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import classnames from 'classnames';
-import { BiUserCircle } from 'react-icons/bi';
+import React, { useState, useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import classnames from "classnames";
+import { BiUserCircle } from "react-icons/bi";
 
 import authContext from "../../contexts/AuthContext";
-import { filterName } from '../../utils/filterName';
-import { fetchSearchOptions } from '../../utils/fetchApi';
+import { filterName } from "../../utils/filterName";
+import { fetchSearchOptions } from "../../utils/fetchApi";
 
-import './Header.scss';
+import "./Header.scss";
 
-function Header () {
+function Header() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOptions, setSearchOptions] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const { isConnected, disconnectUser } = useContext(authContext);
 
   const closeMenu = () => {
@@ -21,7 +21,7 @@ function Header () {
 
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
-  }
+  };
 
   useEffect(() => {
     fetchSearchOptions(setSearchOptions);
@@ -30,7 +30,9 @@ function Header () {
   let options = [];
 
   if (searchOptions.length > 0 && searchValue.length > 0) {
-    options = searchOptions.filter((option) => filterName(option.name).includes(filterName(searchValue)));
+    options = searchOptions.filter((option) =>
+      filterName(option.name).includes(filterName(searchValue))
+    );
   }
 
   return (
@@ -38,7 +40,10 @@ function Header () {
       <div className="Container">
         <div className="Header-Left">
           <NavLink to="/">
-            <img className="Header-Logo" src="https://picsum.photos/60?random=1" />
+            <img
+              className="Header-Logo"
+              src="https://picsum.photos/60?random=1"
+            />
           </NavLink>
           <label className="Header-Search" htmlFor="header-search">
             <input
@@ -65,41 +70,42 @@ function Header () {
         </div>
 
         <div className="Header-Right">
-          <nav className="Header-Nav"> 
+          <nav className="Header-Nav">
             <NavLink to="/constellations">Constellations</NavLink>
-            <NavLink to="/myths" >Mythes</NavLink>
+            {/* <NavLink to="/myths" >Mythes</NavLink> */}
           </nav>
           <div className="Header-Menu">
-            <BiUserCircle
-              className="Header-Menu-Toggle"
-              onClick={toggleMenu}
-            />
+            <BiUserCircle className="Header-Menu-Toggle" onClick={toggleMenu} />
             <ul
-              className={
-                classnames(
-                  'Header-Menu-Container',
-                  { 'Header-Menu-Container--opened': menuOpened }
-                )
-              }
+              className={classnames("Header-Menu-Container", {
+                "Header-Menu-Container--opened": menuOpened,
+              })}
             >
               {/* Liens visibles uniquement si l'utilisateur est déconnecté */}
               {!isConnected && (
                 <>
                   <li className="Header-Menu-Item">
-                    <NavLink to="/signup" onClick={closeMenu}>S'inscrire</NavLink>
+                    <NavLink to="/signup" onClick={closeMenu}>
+                      S'inscrire
+                    </NavLink>
                   </li>
                   <li className="Header-Menu-Item">
-                    <NavLink to="/login" onClick={closeMenu}>Se connecter</NavLink>
+                    <NavLink to="/login" onClick={closeMenu}>
+                      Se connecter
+                    </NavLink>
                   </li>
                 </>
               )}
               {/* Liens visibles uniquement si l'utilisateur est connecté */}
               {isConnected && (
                 <>
-                  <li className="Header-Menu-Item" onClick={() => {
-                    disconnectUser();
-                    closeMenu();
-                  }}>
+                  <li
+                    className="Header-Menu-Item"
+                    onClick={() => {
+                      disconnectUser();
+                      closeMenu();
+                    }}
+                  >
                     Se déconnecter
                   </li>
                 </>

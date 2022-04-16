@@ -13,9 +13,16 @@
   line-height: 1.4rem;
 }
 
+@mixin glass-effect {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 41, 84, 0.257);
+  border-bottom: 1px solid rgb(144 134 181 / 18%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
 @mixin card {
   @include container;
-
+  @include glass-effect;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -26,10 +33,7 @@
     rgba(255, 255, 255, 0.1),
     rgba(255, 255, 255, 0)
   );
-  backdrop-filter: blur(10px);
   border-radius: 20px;
-  border: 1px solid rgba(14, 6, 44, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 @mixin input {

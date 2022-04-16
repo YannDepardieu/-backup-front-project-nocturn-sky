@@ -70,4 +70,17 @@
       padding-bottom: 0;
     }
   }
+
+  &-Modal-Favorite {
+    color: var(--color-lilac);
+    font-size: 2rem;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+
+    &--favorited {
+      color: var(--color-lilac-2);
+    }
+  }
 }

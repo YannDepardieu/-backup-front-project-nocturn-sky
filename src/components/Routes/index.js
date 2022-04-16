@@ -12,7 +12,7 @@ import Homepage from "../../pages/Homepage";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Constellations from "../../pages/Constellations";
-import Myths from "../../pages/Myths";
+// import Myths from "../../pages/Myths";
 
 const Routes = () => {
   return (
@@ -23,7 +23,7 @@ const Routes = () => {
       <RoutesContainer>
         <Route path="/" element={<Homepage />} />
         <Route path="/Constellations" element={<Constellations />} />
-        <Route path="/Myths" element={<Myths />} />
+        {/* <Route path="/Myths" element={<Myths />} /> */}
 
         {/* Routes protégées par un login */}
         <Route element={<AuthenticatedRoute redirectPath="/login" />}></Route>
