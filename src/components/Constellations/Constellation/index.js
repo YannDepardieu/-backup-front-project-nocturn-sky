@@ -8,7 +8,6 @@ import "./Constellation.scss";
 
 const Constellation = ({ constellation }) => {
   const { setOpenedConstellation } = useContext(constellationContext);
-
   return (
     <li
       className="Constellations-Item"
@@ -16,9 +15,7 @@ const Constellation = ({ constellation }) => {
     >
       <img
         className="Constellations-Item-Image"
-        src={`${baseURL}/img/${constellation.latin_name
-          .toLowerCase()
-          .slice(0, 3)}.png`}
+        src={`${baseURL}${constellation.img_url}`}
         onError={({ currentTarget }) =>
           (currentTarget.src = "https://www.fillmurray.com/200/350")
         }

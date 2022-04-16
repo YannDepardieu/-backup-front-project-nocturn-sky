@@ -1,86 +1,97 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import {
   AiOutlineCloseCircle,
   AiFillHeart,
   AiOutlineHeart,
-} from 'react-icons/ai';
+} from "react-icons/ai";
 
-import constellationContext from '../../../contexts/ConstellationContext';
-import authContext from '../../../contexts/AuthContext';
-import { baseURL } from '../../../utils/axios';
+import constellationContext from "../../../contexts/ConstellationContext";
+import authContext from "../../../contexts/AuthContext";
+import { baseURL } from "../../../utils/axios";
 
-import './Modal.scss';
+import "./Modal.scss";
 
 const ConstellationModal = () => {
   const [favorited, setFavorited] = useState(false);
 
   const { isConnected } = useContext(authContext);
-  const { openedConstellation, setOpenedConstellation } = useContext(constellationContext);
-
+  const { openedConstellation, setOpenedConstellation } =
+    useContext(constellationContext);
 
   // Si aucune constellation n'est ouverte (cliquée pour la modal),
   // on return null pour ne pas afficher la modal.
   if (!openedConstellation) {
     return null;
   }
-
+  console.log(openedConstellation);
   return (
     <div
-      className="Constellations-Modal"
+      className="Modal"
       onClick={({ target, currentTarget }) => {
         if (currentTarget === target) {
           setOpenedConstellation(null);
         }
       }}
     >
-      <div className="Block">
-        <AiOutlineCloseCircle
-          className="Constellations-Modal-Close"
+      <div className="Block Detail-Block">
+        <a
+          className="Detail-Modal-Close"
           onClick={() => setOpenedConstellation(null)}
-        />
-
-        <div className="Constellations-Modal-Details">
-          <img
-            src={`${baseURL}/img/${openedConstellation.latin_name.toLowerCase().slice(0, 3)}.png`}
-            onError={({ currentTarget }) => currentTarget.src = 'https://www.fillmurray.com/200/350'}
-            alt={openedConstellation.name}
-            className="Constellations-Modal-Details-Image"
-          />
-          <h2 className="Title Title--small">{openedConstellation.name}</h2>
-          <em className="Subtitle">{openedConstellation.latin_name}</em>
+        >
+          <AiOutlineCloseCircle />
+        </a>
+        <h3 className="Title Title--small Detail-Block-Title">
+          Constellation {openedConstellation.name}
+        </h3>
+        <div className="Detail-Block-Container">
+          <figure className="Detail-Picture">
+            <img
+              src={`${baseURL}${openedConstellation.img_url}`}
+              alt={openedConstellation.name}
+            />
+            <figcaption className="Title Title--small Detail-Picture-Title">
+              {openedConstellation.latin_name}
+            </figcaption>
+          </figure>
+          <div className="Detail-Description">
+            {Boolean(openedConstellation.myth[0].legend) && (
+              <>
+                <h2 className="Detail-Description-Title"> Mythe :</h2>
+                <p className="Detail-Description-Text">
+                  D'origine {openedConstellation.myth[0].origin},{" "}
+                  {openedConstellation.myth[0].legend}
+                </p>
+              </>
+            )}
+            {Boolean(openedConstellation.history) && (
+              <>
+                <h3 className="Detail-Description-Title">Histoire :</h3>
+                <p className="Detail-Description-Text">
+                  {openedConstellation.history}
+                </p>
+              </>
+            )}
+            {Boolean(openedConstellation.spotting) && (
+              <>
+                <h3 className="Detail-Description-Title">Répérage :</h3>
+                <p className="Detail-Description-Text">
+                  {openedConstellation.spotting}
+                </p>
+              </>
+            )}
+          </div>
         </div>
 
-        <div className="Constellations-Modal-Description">
-          {Boolean(openedConstellation.story) && (
-            <>
-              <strong className="Subtitle">Son histoire</strong>
-              <p className="Constellations-Modal-Description-Paragraph">{openedConstellation.story}</p>
-            </>
-          )}
-          {Boolean(openedConstellation.spotting) && (
-            <>
-              <strong className="Subtitle">Sa découverte</strong>
-              <p className="Constellations-Modal-Description-Paragraph">{openedConstellation.spotting}</p>
-            </>
-          )}
-          {Boolean(openedConstellation.myth) && (
-            <>
-              <strong className="Subtitle">Son mythe</strong>
-              <p className="Constellations-Modal-Description-Paragraph">{openedConstellation.myth}</p>
-            </>
-          )}
-        </div>
-
-        {(isConnected && favorited) && (
+        {isConnected && favorited && (
           <AiFillHeart
             onClick={() => setFavorited(!favorited)}
-            className="Constellations-Modal-Favorite Constellations-Modal-Favorite--favorited"
+            className="Detail-Modal-Favorite Detail-Modal-Favorite--favorited"
           />
         )}
-        {(isConnected && !favorited) && (
+        {isConnected && !favorited && (
           <AiOutlineHeart
             onClick={() => setFavorited(!favorited)}
-            className="Constellations-Modal-Favorite"
+            className="Detail-Modal-Favorite"
           />
         )}
       </div>

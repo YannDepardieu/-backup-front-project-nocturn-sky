@@ -9,7 +9,7 @@ const Myths = () => {
   return (
     <MythProvider>
       <main className="Main Myths">
-        <h1 className="Title Myths-Title">Mythes</h1>
+        <h1 className="Title Page-Title">Mythes</h1>
         <MythsList />
         <MythsModal />
       </main>

@@ -9,7 +9,7 @@ const Constellations = () => {
   return (
     <ConstellationProvider>
       <main className="Main Constellations">
-        <h1 className="Title Constellations-Title">Constellations</h1>
+        <h1 className="Title Page-Title">Constellations</h1>
         <ConstellationsList />
         <ConstellationModal />
       </main>

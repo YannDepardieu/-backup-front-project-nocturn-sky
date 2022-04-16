@@ -23,31 +23,31 @@ const TodayMyth = () => {
     <section id="Myth" className="Section Myth">
       <h2 className="Section-Title">Retrouvez les mythes</h2>
 
-      <div className="Block Myth-Block">
-        <h3 className="Title Title--small Myth-Block-Title">
+      <div className="Block Detail-Block">
+        <h3 className="Title Title--small Detail-Block-Title">
           Constellation {constellation.constellation.name}
         </h3>
-        <div className="Myth-Block-Container">
-          <figure className="Myth-Picture">
+        <div className="Detail-Block-Container">
+          <figure className="Detail-Picture">
             <img
-              src={`${baseURL}${constellation.constellation.img_url} `}
+              src={`${baseURL}${constellation.constellation.img_url}`}
               alt={`Constellation ${constellation.constellation.name} `}
             />
-            <figcaption className="Title Title--small Myth-Picture-Title">
+            <figcaption className="Title Title--small Detail-Picture-Title">
               {constellation.constellation.latin_name}
             </figcaption>
           </figure>
-          <div className="Myth-Description">
-            <h3 className="Myth-Description-Title">Mythe :</h3>
-            <p className="Myth-Description-Text">
+          <div className="Detail-Description">
+            <h3 className="Detail-Description-Title">Mythe :</h3>
+            <p className="Detail-Description-Text">
               D'origine {constellation.origin}, {constellation.legend}
             </p>
-            <h3 className="Myth-Description-Title">Histoire :</h3>
-            <p className="Myth-Description-Text">
+            <h3 className="Detail-Description-Title">Histoire :</h3>
+            <p className="Detail-Description-Text">
               {constellation.constellation.story}
             </p>
-            <h3 className="Myth-Description-Title">Répérage :</h3>
-            <p className="Myth-Description-Text">
+            <h3 className="Detail-Description-Title">Répérage :</h3>
+            <p className="Detail-Description-Text">
               {constellation.constellation.spotting}
             </p>
           </div>
