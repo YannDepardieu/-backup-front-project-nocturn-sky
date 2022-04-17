@@ -1,8 +1,32 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import celestial from "d3-celestial";
+// import d3 fron 'd3';
+import { MapFormContext } from "../../../contexts/MapFormContext";
 
 class InteractiveMap extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      longitude: 0,
+      latitude: 0,
+      year: 0,
+      month: 0,
+      day: 0,
+      hour: 0,
+      minute: 0,
+    };
+  }
+  componentDidMount = async () => {
+    await this.setState({
+      longitude: this.props.longitude,
+      latitude: this.props.latitude,
+      year: this.props.year,
+      month: this.props.month,
+      day: this.props.day,
+      hour: this.props.hour,
+      minute: this.props.minute,
+    });
+
     const config = {
       width: 0, // Default width, 0 = full parent width; height is determined by projection
       projection: "winkel3", // baker 3, craig 1.7, eckert3, ginzburg4 2,4, kavrayskiy7, loximuth,mtFlatPolarQuartic, patterson, ,
@@ -181,9 +205,13 @@ class InteractiveMap extends Component {
         }, // Show supergalactic plane
       },
     };
+
     const test = celestial.Celestial();
     test.display(config);
-  }
+    test.rotate({ center: [30.0456, 60.55464, 0] });
+  };
+  static dataForm = MapFormContext;
+
   render() {
     return (
       <div className="Map-InteractiveMap Container">

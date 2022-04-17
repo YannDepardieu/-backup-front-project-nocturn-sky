@@ -13,6 +13,7 @@ import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Constellations from "../../pages/Constellations";
 // import Myths from "../../pages/Myths";
+import Footer from "../Footer";
 
 const Routes = () => {
   return (
@@ -36,6 +37,7 @@ const Routes = () => {
 
         <Route element={<div>404</div>} />
       </RoutesContainer>
+      <Footer />
       {/* mettre le footer */}
     </Router>
   );

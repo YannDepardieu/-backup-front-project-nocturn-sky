@@ -52,7 +52,7 @@
     padding: 1.2rem 1rem 0 3rem;
     overflow-y: auto;
     height: 100%;
-    max-height: calc(100% - 1rem); // augmenter pour le coeur
+    max-height: calc(100% - 1.5rem); // augmenter pour le coeur
 
     &-Title {
       @include subtitle-2;
