@@ -85,12 +85,42 @@ export const fetchRandomMyth = (saveRandomMyth) => {
     });
 };
 
+export const getAddress = async (address) => {
+  try {
+    const response = await axios.get(`/geocoding/forward/`, {
+      params: {
+        address: address,
+      },
+    });
+    const result = {
+      latitude: response.data[0].latitude,
+      longitude: response.data[0].longitude,
+    };
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+  // axios
+  //   .get(`/geocoding/forward/`, {
+  //     params: {
+  //       address: address,
+  //     },
+  //   })
+  //   .then(({ data }) => {
+  //     return data;
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+};
+
 export const fetchApi = {
   login,
   signup,
   fetchUserDetails,
   fetchContentEntity,
   fetchRandomMyth,
+  getAddress,
 };
 
 export default fetchApi;
