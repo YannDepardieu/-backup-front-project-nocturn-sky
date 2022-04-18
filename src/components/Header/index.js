@@ -89,7 +89,16 @@ function Header() {
             {/* <NavLink to="/myths" >Mythes</NavLink> */}
           </nav>
           <div className="Header-Menu">
-            <BiUserCircle className="Header-Menu-Toggle" onClick={toggleMenu} />
+            {/* <BiUserCircle className="Header-Menu-Toggle" onClick={toggleMenu} /> */}
+            <BiUserCircle
+              className={
+                isConnected
+                  ? "Header-Menu-Toggle Connected"
+                  : "Header-Menu-Toggle"
+              }
+              onClick={toggleMenu}
+            />
+
             <ul
               className={classnames("Header-Menu-Container", {
                 "Header-Menu-Container--opened": menuOpened,

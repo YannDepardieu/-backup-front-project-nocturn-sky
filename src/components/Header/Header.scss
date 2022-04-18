@@ -96,6 +96,14 @@
       font-size: 2rem;
       cursor: pointer;
     }
+    .Connected {
+      transform: filter 0.5s ease;
+      filter: drop-shadow(0 0 0.2rem var(--color-lilac));
+
+      &:hover {
+        filter: drop-shadow(0 0 0 var(--color-lilac));
+      }
+    }
 
     &-Container {
       position: fixed;
@@ -121,6 +129,7 @@
     }
 
     &-Item {
+      @include link;
       margin: 0.75rem 0;
       font-weight: 600;
       cursor: pointer;

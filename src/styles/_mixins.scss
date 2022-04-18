@@ -37,25 +37,27 @@
 }
 
 @mixin input {
-  background-color: #fff;
+  background-color: var(--color-lilac-light);
   border: none;
   border-radius: 99rem;
   padding: 0.75rem;
   margin: 0.125rem;
+  color: var(--color-violet-deep);
 
   &::placeholder {
     font-style: italic;
+    color: var(--color-violet-light);
   }
 }
 
 @mixin button {
   @include input;
-  background-color: var(--color-lilac-2);
+  background-color: var(--color-violet-light);
   font-weight: 600;
   transition: 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) background-color;
 
   &:hover {
-    background-color: var(--color-lilac);
+    background-color: var(--color-lilac-2);
   }
 }
 
