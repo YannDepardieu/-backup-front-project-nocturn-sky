@@ -19,6 +19,7 @@
   }
 
   &-Logo {
+    @include svg;
     fill: var(--color-lilac);
     width: 4.5rem;
     height: auto;
@@ -78,6 +79,7 @@
   }
 
   &-Nav {
+    @include link;
     display: flex;
     align-items: center;
 
@@ -88,6 +90,7 @@
 
   &-Menu {
     &-Toggle {
+      @include svg;
       display: block;
       margin-right: 1rem;
       font-size: 2rem;
