@@ -1,96 +1,145 @@
-import { useState, useContext } from "react";
+// import { useState, useContext } from "react";
+import { Component, useContext } from "react";
 import authContext from "../../../contexts/AuthContext";
-import { MapFormContext } from "../../../contexts/MapFormContext";
 import { getAddress } from "../../../utils/fetchApi";
+import InteractiveMap from "./InteractiveMap";
 
-const Form = () => {
-  const { isConnected } = useContext(authContext);
-  const { inputContent, setInputContent } = useContext(MapFormContext);
+class Form extends Component {
+  constructor(props) {
+    super(props);
 
-  const [address, setAddress] = useState("");
-  const [datetime, setDatetime] = useState(new Date());
-  const [locationError, setLocationError] = useState(null);
-  const [userCoords, setUserCoords] = useState({});
+    this.state = {
+      address: "",
+      latitude: 0,
+      longitude: 0,
+      datetime: new Date(),
+      errorMssg: "",
+    };
+  }
+  // const { isConnected } = useContext(authContext);
+  // const { inputContent, setInputContent } = useContext(MapFormContext);
 
-  const getUserLocation = () => {
+  // const [address, setAddress] = useState("");
+  // const [datetime, setDatetime] = useState(new Date());
+  // const [locationError, setLocationError] = useState(null);
+  // const [userCoords, setUserCoords] = useState({});
+
+  getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (userPosition) => {
-          setUserCoords(userPosition.coords);
-          setInputContent(userPosition.coords);
+          this.setState({
+            latitude: userPosition.coords.latitude,
+            longitude: userPosition.coords.longitude,
+            map: true,
+          });
+          // setUserCoords(userPosition.coords);
+          // setInputContent(userPosition.coords);
         },
         (error) => {
-          setLocationError(error.message);
+          console.log(error);
+          this.setState({ errorMssg: error.message });
+          // setLocationError(error.message);
         }
       );
     } else {
-      setLocationError(
-        "Votre navigateur ne permet pas de partager votre position."
-      );
+      this.setState({
+        errorMssg: "Votre navigateur ne permet pas de partager votre position.",
+      });
+      // setLocationError(
+      //   "Votre navigateur ne permet pas de partager votre position."
+      // );
     }
   };
+  // selectDateTime = (e) => {
+  //   this.setState({ datetime: e.target.value });
+  //   // setDatetime(e.target.value);
+  //   // setInputContent(e.target.value);
+  // };
 
-  const apiLocation = async () => {
-    const result = await getAddress(address);
-    setInputContent(result);
+  apiLocation = async () => {
+    const result = await getAddress(this.state.address);
+    this.setState({
+      latitude: result.latitude,
+      longitude: result.longitude,
+      map: true,
+    });
+    // console.log(this.state.latitude, this.state.longitude);
+    // setInputContent(result);
   };
 
-  const selectDateTime = (e) => {
-    setDatetime(e.target.value);
-    setInputContent(e.target.value);
-  };
-
-  console.log("Form inputContent", inputContent);
-
-  return (
-    <div className="Block Map-Form">
-      {locationError && (
-        <p>
-          <span onClick={() => setLocationError(null)}>Fermer</span>
-          {locationError}
-        </p>
-      )}
-      <div className="Map-Form-left">
-        <input
-          title="Adresse"
-          className="Input"
-          name="address"
-          type="text"
-          placeholder="1 rue Dupont, 75000 Paris, FRANCE"
-          value={address}
-          onChange={({ currentTarget }) => {
-            setAddress(currentTarget.value);
-            console.log(currentTarget.value);
-          }}
+  // console.log("Form inputContent", inputContent);
+  render() {
+    return (
+      <div className="Container">
+        <div className="Block Map-Form">
+          {/* {!this.state.errorMssg ? 
+            <p>
+              <span onClick={() => this.setState({ errorMssg: null })}>
+                Fermer
+              </span>
+              {this.state.errorMssg}
+            </p>
+          } */}
+          <div className="Map-Form-left">
+            <input
+              title="Adresse"
+              className="Input"
+              name="address"
+              type="text"
+              placeholder="1 rue Dupont, 75000 Paris, FRANCE"
+              value={this.address}
+              onChange={({ currentTarget }) => {
+                this.setState({ address: currentTarget.value, map: true });
+                // setAddress(currentTarget.value);
+                // console.log(currentTarget.value);
+              }}
+            />
+            <button className="Button" onClick={this.apiLocation}>
+              Chercher
+            </button>
+            <div className="Map-Form-row">
+              <input
+                className="Input"
+                name="datetime"
+                type="datetime-local"
+                value={this.datetime}
+                // onChange={({ currentTarget }) => {
+                //   setDatetime(currentTarget.value);
+                //   console.log(`date : ${currentTarget.value}`);
+                // }}
+                onChange={({ currentTarget }) => {
+                  this.setState({ datetime: currentTarget.value });
+                }}
+              />
+              <button className="Button" onClick={this.getUserLocation}>
+                Position actuelle
+              </button>
+            </div>
+          </div>
+          {/* {isConnected && (
+            <div className="Map-Form-right">
+              <button className="Button">
+                Enregistrer ce lieu comme favori
+              </button>
+              <button className="Button">Enregistrer un événement</button>
+            </div>
+          )} */}
+        </div>
+        {/* {console.log(
+          "states sents to map",
+          this.state.latitude,
+          this.state.longitude,
+          this.state.datetime
+        )} */}
+        <InteractiveMap
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
+          datetime={this.state.datetime}
         />
-        <button className="Button" onClick={apiLocation}>
-          Chercher
-        </button>
-        <div className="Map-Form-row">
-          <input
-            className="Input"
-            name="datetime"
-            type="datetime-local"
-            value={datetime}
-            // onChange={({ currentTarget }) => {
-            //   setDatetime(currentTarget.value);
-            //   console.log(`date : ${currentTarget.value}`);
-            // }}
-            onChange={selectDateTime}
-          />
-          <button className="Button" onClick={getUserLocation}>
-            Position actuelle
-          </button>
-        </div>
       </div>
-      {isConnected && (
-        <div className="Map-Form-right">
-          <button className="Button">Enregistrer ce lieu comme favori</button>
-          <button className="Button">Enregistrer un événement</button>
-        </div>
-      )}
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Form;

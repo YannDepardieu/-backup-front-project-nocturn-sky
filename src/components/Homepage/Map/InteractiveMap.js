@@ -1,32 +1,32 @@
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
 import celestial from "d3-celestial";
-// import d3 fron 'd3';
-import { MapFormContext } from "../../../contexts/MapFormContext";
+let Celestial = celestial.Celestial();
 
 class InteractiveMap extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      longitude: 0,
-      latitude: 0,
-      year: 0,
-      month: 0,
-      day: 0,
-      hour: 0,
-      minute: 0,
-    };
-  }
-  componentDidMount = async () => {
-    await this.setState({
-      longitude: this.props.longitude,
-      latitude: this.props.latitude,
-      year: this.props.year,
-      month: this.props.month,
-      day: this.props.day,
-      hour: this.props.hour,
-      minute: this.props.minute,
-    });
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     latitude: 0,
+  //     longitude: 0,
+  //     datetime: "",
+  //   };
+  // }
 
+  render() {
+    // console.log("this.props ", this.props);
+    return (
+      <div className="Map-InteractiveMap Container">
+        <div id="celestial-map"></div>
+      </div>
+    );
+  }
+
+  componentDidMount = async () => {
+    // await this.setState({
+    //   latitude: this.props.latitude,
+    //   longitude: this.props.longitude,
+    //   datetime: this.props.datetime,
+    // });
     const config = {
       width: 0, // Default width, 0 = full parent width; height is determined by projection
       projection: "winkel3", // baker 3, craig 1.7, eckert3, ginzburg4 2,4, kavrayskiy7, loximuth,mtFlatPolarQuartic, patterson, ,
@@ -206,19 +206,22 @@ class InteractiveMap extends Component {
       },
     };
 
-    const test = celestial.Celestial();
-    test.display(config);
-    test.rotate({ center: [30.0456, 60.55464, 0] });
+    Celestial.display(config);
   };
-  static dataForm = MapFormContext;
 
-  render() {
-    return (
-      <div className="Map-InteractiveMap Container">
-        <div id="celestial-map"></div>
-      </div>
-    );
-  }
+  componentDidUpdate = async (prevProps) => {
+    if (this.props !== prevProps) {
+      console.log("new value");
+      Celestial.skyview({
+        location: [this.props.latitude, this.props.longitude],
+        date: new Date(this.props.datetime),
+      });
+      console.log("prevProps ", prevProps);
+      console.log("props ", this.props);
+    }
+  };
 }
+// 108 junco de la vega 64850 Monterrey, Mexico
+// 3 place de l'eglise 66760 Ur, France
 
 export default InteractiveMap;

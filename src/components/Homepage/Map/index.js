@@ -1,5 +1,5 @@
 import Form from "./Form";
-import InteractiveMap from "./InteractiveMap";
+// import InteractiveMap from "./InteractiveMap";
 import "./Map.scss";
 
 const Map = () => {
@@ -7,7 +7,7 @@ const Map = () => {
     <section id="Map" className="Map Section">
       <h1 className="Section-Title">Map</h1>
       <Form />
-      <InteractiveMap />
+      {/* <InteractiveMap /> */}
     </section>
   );
 };
