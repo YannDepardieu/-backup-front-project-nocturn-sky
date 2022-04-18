@@ -3,6 +3,10 @@
 .Homepage {
   display: flex;
   flex-direction: column;
+
+  .Map {
+    height: min-content;
+  }
 }
 
 .Homepage .Detail {
@@ -57,13 +61,16 @@
     &-Title {
       @include subtitle-2;
       text-align: left;
-      padding: 0.1rem 0.5rem;
-      display: inline;
+      padding: 0.5rem 0.5rem;
+
+      &:first-child {
+        padding-top: 0;
+      }
     }
 
     &-Text {
       @include paragraph;
-      padding: 0.7rem 0 2.4rem 0;
+      padding: 0rem 0 2.4rem 0;
       line-height: 1.6rem;
     }
     &-Text:last-child {
@@ -72,6 +79,7 @@
   }
 
   &-Modal-Favorite {
+    @include svg;
     color: var(--color-lilac);
     font-size: 2rem;
     position: absolute;

@@ -29,7 +29,7 @@ class InteractiveMap extends Component {
     // });
     const config = {
       width: 0, // Default width, 0 = full parent width; height is determined by projection
-      projection: "winkel3", // baker 3, craig 1.7, eckert3, ginzburg4 2,4, kavrayskiy7, loximuth,mtFlatPolarQuartic, patterson, ,
+      projection: "kavrayskiy7", // eckert3, kavrayskiy7, patterson,
       transform: "equatorial", // Coordinate transformation: equatorial (default), ecliptic, galactic, supergalactic
       center: null, // Initial center coordinates in equatorial transformation [hours, degrees, degrees],
       // otherwise [degrees, degrees, degrees], 3rd parameter is orientation, null = default center

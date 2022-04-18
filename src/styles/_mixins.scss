@@ -17,7 +17,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(107, 85, 185, 0.299);
   border-bottom: 1px solid rgb(144 134 181 / 18%);
-  box-shadow: 0 8px 32px 0 rgba(17, 2, 42, 0.414);
+  box-shadow: 2px 8px 25px 0 rgba(17, 2, 42, 0.843);
 }
 
 @mixin card {
@@ -79,10 +79,10 @@
 
 @mixin subtitle-2 {
   @include title;
+  text-shadow: unset;
   font-size: 1.3rem;
   font-weight: 400;
-  color: var(--color-violet-deep);
-  background-color: var(--color-lilac-light-transp);
+  color: var(--color-lilac-transp-2);
   border-radius: 20px;
 }
 

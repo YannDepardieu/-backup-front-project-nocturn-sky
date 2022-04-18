@@ -20,8 +20,7 @@ const TodayMyth = () => {
     return null;
   }
 
-  // const data = { ...randomMyth[0] };
-  const constellation = randomMyth[0];
+  const constellation = randomMyth;
 
   return (
     <section id="Myth" className="Section Myth">
@@ -48,7 +47,7 @@ const TodayMyth = () => {
             </p>
             <h3 className="Detail-Description-Title">Histoire :</h3>
             <p className="Detail-Description-Text">
-              {constellation.constellation.story}
+              {constellation.constellation.history}
             </p>
             <h3 className="Detail-Description-Title">Répérage :</h3>
             <p className="Detail-Description-Text">

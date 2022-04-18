@@ -71,7 +71,7 @@ class Form extends Component {
   // console.log("Form inputContent", inputContent);
   render() {
     return (
-      <div className="Container">
+      <div className="Map-Form-Container">
         <div className="Block Map-Form">
           {/* {!this.state.errorMssg ? 
             <p>
@@ -83,7 +83,7 @@ class Form extends Component {
           } */}
           <div className="Map-Form-left">
             <input
-              data-title="Saisissez votre adresse complète"
+              title="Saisissez votre adresse complète"
               className="Input"
               name="address"
               type="text"
@@ -96,7 +96,7 @@ class Form extends Component {
               }}
             />
             <button
-              data-title="Cherchez les constellations visibles depuis votre adresse"
+              title="Cherchez les constellations visibles depuis votre adresse"
               className="Button"
               onClick={this.apiLocation}
             >
@@ -104,7 +104,7 @@ class Form extends Component {
             </button>
             <div className="Map-Form-row">
               <input
-                data-title="Changez la date et l'heure pour montrer les constellations visibles"
+                title="Changez la date et l'heure pour montrer les constellations visibles"
                 className="Input"
                 name="datetime"
                 type="datetime-local"
@@ -118,7 +118,7 @@ class Form extends Component {
                 }}
               />
               <button
-                data-title="Regardez les constellations visibles depuis votre position actuelle"
+                title="Regardez les constellations visibles depuis votre position actuelle"
                 className="Button"
                 onClick={this.getUserLocation}
               >

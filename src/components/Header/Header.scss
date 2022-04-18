@@ -6,11 +6,13 @@
   top: 0;
   right: 0;
   left: 0;
-  width: 100vw;
   background: var(--color-violet-deep);
   color: var(--color-lilac);
+  opacity: 0.95;
+  filter: drop-shadow(0 3px 8px var(--color-violet-deep));
 
   .Container {
+    height: 70px;
     padding: 0.25rem 0;
     position: relative;
     display: flex;
@@ -21,8 +23,8 @@
   &-Logo {
     @include svg;
     fill: var(--color-lilac);
-    width: 4.5rem;
-    height: auto;
+    width: 80%;
+    height: 90%;
     margin-left: 0.7rem;
   }
 
@@ -64,12 +66,16 @@
   &-Right {
     display: flex;
     align-items: center;
+    height: 100%;
   }
 
   &-Left {
     .Input {
       margin: 0 1rem 0 2rem;
       width: 240px;
+    }
+    a {
+      height: 100%;
     }
   }
 
@@ -106,12 +112,12 @@
     }
 
     &-Container {
+      display: none;
       position: fixed;
-      display: flex;
       flex-direction: column;
       right: 0;
-      top: 47px;
-      background-color: rgba(0, 0, 0, 0.5);
+      top: 70px;
+      background-color: rgba(0, 0, 23, 0.35);
       padding: 1rem;
       min-width: 160px;
       border-radius: 0 0 0 1rem;
@@ -119,9 +125,10 @@
       transform: translateX(100%);
       pointer-events: none;
       transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) opacity,
-        0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) transform;
+        0.6s cubic-bezier(0.785, 0.135, 0.15, 0.86) transform;
 
       &--opened {
+        display: flex;
         opacity: 1;
         transform: translateX(0);
         pointer-events: all;
