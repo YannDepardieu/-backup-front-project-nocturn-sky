@@ -58,7 +58,7 @@ function Header() {
   const handleIsOpen = () => {
     setIsOpen(false);
   }
-  if (submittedConstellation.length !== 0) console.log(submittedConstellation.myths.map((e) => e.id))
+
   return (
   <>
     <header className="Header">

@@ -92,7 +92,7 @@ export const fetchConstellation = (id, saveConstellation) => {
      saveConstellation(data);
   })
   .catch((error) => {
-    console.log(error)
+    console.log(error);
   });
 }
 
