@@ -58,7 +58,7 @@ function Header() {
   const handleIsOpen = () => {
     setIsOpen(false);
   }
-
+  if (submittedConstellation.length !== 0) console.log(submittedConstellation.myths.map((e) => e.id))
   return (
   <>
     <header className="Header">
@@ -190,8 +190,8 @@ function Header() {
                 </figcaption>
               </figure>
               <div className="Detail-Description">
-                {/* {
-                  (submittedConstellation.myths !== null && isOpen) && submittedConstellation.myths.map((e) => {
+                {
+                  submittedConstellation.myths && submittedConstellation.myths.map((e) => {
                     return (
                       <>
                         <h2 className="Detail-Description-Title"> Mythe :</h2>
@@ -201,7 +201,7 @@ function Header() {
                       </>
                     );
                   })
-                } */}
+                }
                 {Boolean(submittedConstellation.history) && (
                   <>
                     <h3 className="Detail-Description-Title">Histoire :</h3>
