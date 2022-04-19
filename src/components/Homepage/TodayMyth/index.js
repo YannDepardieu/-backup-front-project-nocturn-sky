@@ -22,8 +22,6 @@ const TodayMyth = () => {
 
   const constellation = randomMyth;
 
-  console.log('banane', constellation);
-
   return (
     <section id="Myth" className="Section Myth">
       <h2 className="Section-Title">Retrouvez les mythes</h2>
