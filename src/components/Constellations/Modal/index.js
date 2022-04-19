@@ -10,6 +10,7 @@ import authContext from "../../../contexts/AuthContext";
 import { baseURL } from "../../../utils/axios";
 
 import "./Modal.scss";
+import ReactPropTypesSecret from "prop-types/lib/ReactPropTypesSecret";
 
 const ConstellationModal = () => {
   const [favorited, setFavorited] = useState(false);
@@ -23,7 +24,27 @@ const ConstellationModal = () => {
   if (!openedConstellation) {
     return null;
   }
-  console.log(openedConstellation);
+
+  // if (openedConstellation.myths.length > 0) {
+  //   console.log("several myths");
+  // }
+
+  // const SeveralMyths = (props) => {
+  //   console.log(props);
+  //   const myths = props;
+  //   console.log(myths);
+  //   myths.map((myth) => {
+  //     return (
+  //       <React.Fragment>
+  //         <h2 className="Detail-Description-Title"> Mythe :</h2>
+  //         <p className="Detail-Description-Text">
+  //           Selon le mythe d'origine {myth.origin}, {myth.legend}
+  //         </p>
+  //       </React.Fragment>
+  //     );
+  //   });
+  // };
+
   return (
     <div
       className="Modal"
@@ -54,15 +75,9 @@ const ConstellationModal = () => {
             </figcaption>
           </figure>
           <div className="Detail-Description">
-            {Boolean(openedConstellation.myth[0].legend) && (
-              <>
-                <h2 className="Detail-Description-Title"> Mythe :</h2>
-                <p className="Detail-Description-Text">
-                  D'origine {openedConstellation.myth[0].origin},{" "}
-                  {openedConstellation.myth[0].legend}
-                </p>
-              </>
-            )}
+            {/* {openedConstellation.myths.length > 0 && (
+              <SeveralMyths myths={openedConstellation.myths} />
+            )} */}
             {Boolean(openedConstellation.history) && (
               <>
                 <h3 className="Detail-Description-Title">Histoire :</h3>

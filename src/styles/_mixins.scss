@@ -14,7 +14,7 @@
 }
 
 @mixin glass-effect {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(107, 85, 185, 0.299);
   border-bottom: 1px solid rgb(144 134 181 / 18%);
   box-shadow: 2px 8px 25px 0 rgba(17, 2, 42, 0.843);
