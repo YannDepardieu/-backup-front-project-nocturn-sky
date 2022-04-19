@@ -85,6 +85,17 @@ export const fetchRandomMyth = (saveRandomMyth) => {
     });
 };
 
+export const fetchConstellation = (id, saveConstellation) => {
+  axios
+  .get(`/constellation/${Number(id)}`)
+  .then(({ data }) => {
+     saveConstellation(data);
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+}
+
 export const getAddress = async (address) => {
   try {
     const response = await axios.get(`/geocoding/forward/`, {
@@ -120,6 +131,7 @@ export const fetchApi = {
   fetchUserDetails,
   fetchContentEntity,
   fetchRandomMyth,
+  fetchConstellation,
   getAddress,
 };
 
