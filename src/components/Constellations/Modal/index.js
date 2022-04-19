@@ -25,6 +25,7 @@ const ConstellationModal = () => {
     return null;
   }
 
+  console.log('hello', openedConstellation);
   // if (openedConstellation.myths.length > 0) {
   //   console.log("several myths");
   // }
@@ -75,9 +76,21 @@ const ConstellationModal = () => {
             </figcaption>
           </figure>
           <div className="Detail-Description">
-            {/* {openedConstellation.myths.length > 0 && (
-              <SeveralMyths myths={openedConstellation.myths} />
-            )} */}
+            {(openedConstellation.myths !== null ? openedConstellation.myths.map((e) => {
+              return (
+                <React.Fragment key={e.id}>
+                  <h2 className="Detail-Description-Title"> Mythe :</h2>
+                  <p className="Detail-Description-Text">
+                    Selon le mythe d'origine {e.origin}, {e.legend}
+                  </p>
+                </React.Fragment>
+              );
+              }
+            ) 
+            :
+            ''
+            )        
+          }
             {Boolean(openedConstellation.history) && (
               <>
                 <h3 className="Detail-Description-Title">Histoire :</h3>
