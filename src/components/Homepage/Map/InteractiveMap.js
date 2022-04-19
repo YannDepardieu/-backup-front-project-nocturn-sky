@@ -3,17 +3,7 @@ import celestial from "d3-celestial";
 let Celestial = celestial.Celestial();
 
 class InteractiveMap extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     latitude: 0,
-  //     longitude: 0,
-  //     datetime: "",
-  //   };
-  // }
-
   render() {
-    // console.log("this.props ", this.props);
     return (
       <div className="Map-InteractiveMap Container">
         <div id="celestial-map"></div>
@@ -22,11 +12,6 @@ class InteractiveMap extends Component {
   }
 
   componentDidMount = async () => {
-    // await this.setState({
-    //   latitude: this.props.latitude,
-    //   longitude: this.props.longitude,
-    //   datetime: this.props.datetime,
-    // });
     const config = {
       width: 0, // Default width, 0 = full parent width; height is determined by projection
       projection: "kavrayskiy7", // eckert3, kavrayskiy7, patterson,
@@ -205,23 +190,17 @@ class InteractiveMap extends Component {
         }, // Show supergalactic plane
       },
     };
-
     Celestial.display(config);
   };
 
   componentDidUpdate = async (prevProps) => {
     if (this.props !== prevProps) {
-      console.log("new value");
       Celestial.skyview({
         location: [this.props.latitude, this.props.longitude],
         date: new Date(this.props.datetime),
       });
-      console.log("prevProps ", prevProps);
-      console.log("props ", this.props);
     }
   };
 }
-// 108 junco de la vega 64850 Monterrey, Mexico
-// 3 place de l'eglise 66760 Ur, France
 
 export default InteractiveMap;

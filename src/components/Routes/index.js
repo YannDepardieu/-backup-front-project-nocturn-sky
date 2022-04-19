@@ -38,7 +38,6 @@ const Routes = () => {
         <Route element={<div>404</div>} />
       </RoutesContainer>
       <Footer />
-      {/* mettre le footer */}
     </Router>
   );
 };
