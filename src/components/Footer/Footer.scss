@@ -1,0 +1,40 @@
+@import "../../styles/mixins";
+
+.Footer {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  color: var(--color-lilac-2);
+  padding: 3rem;
+  border-top: 1.3px solid var(--color-lilac-transp);
+  font-weight: 400;
+
+  &-Section {
+    line-height: 1.5rem;
+
+    &-Title {
+      @include subtitle;
+      font-size: 1.3rem;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    &-Link {
+      @include link;
+      padding-left: 0.5rem;
+    }
+
+    // &-Content {
+    //   border: 1px solid salmon;
+    // }
+  }
+  .Description {
+    width: 60%;
+
+    // .Footer
+  }
+  .Plan {
+    width: 40%;
+    text-align: left;
+  }
+}

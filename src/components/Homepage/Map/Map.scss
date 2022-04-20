@@ -1,0 +1,39 @@
+@import "../../../../public/celestial/celestial";
+
+.Homepage .Map {
+  &-Form {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: row;
+
+    &-row {
+      display: flex;
+      align-items: stretch;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+
+    &-right {
+      .Button {
+        height: 100%;
+      }
+    }
+  }
+  &-InteractiveMap {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    max-width: 60rem;
+    // height: 100%;
+  }
+}
