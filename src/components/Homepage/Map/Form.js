@@ -46,6 +46,7 @@ const Form = () => {
       <div className="Block Map-Form">
         <div className="Map-Form-left">
           <input
+            autoComplete="off"
             title="Saisissez votre adresse complète"
             className="Input"
             name="address"
@@ -83,6 +84,12 @@ const Form = () => {
             </button>
           </div>
         </div>
+        {isConnected && (
+          <div className="Map-Form-right">
+            <button className="Button">Enregistrer ce lieu comme favori</button>
+            <button className="Button">Enregistrer un événement</button>
+          </div>
+        )}
       </div>
       <InteractiveMap
         latitude={userCoords.latitude}

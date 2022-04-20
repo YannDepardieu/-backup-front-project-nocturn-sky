@@ -37,16 +37,25 @@
 }
 
 @mixin input {
-  background-color: var(--color-lilac-light);
+  color: var(--color-violet);
+  background-color: var(--color-lilac);
   border: none;
   border-radius: 99rem;
   padding: 0.75rem;
   margin: 0.125rem;
-  color: var(--color-violet-deep);
 
   &::placeholder {
     font-style: italic;
     color: var(--color-violet-light);
+  }
+
+  &:focus {
+    color: var(--color-violet);
+    background-color: var(--color-lilac-light);
+
+    &::placeholder {
+      color: transparent;
+    }
   }
 }
 
@@ -57,6 +66,7 @@
   transition: 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) background-color;
 
   &:hover {
+    color: var(--color-violet);
     background-color: var(--color-lilac-2);
   }
 }
