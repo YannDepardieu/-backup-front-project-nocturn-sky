@@ -74,10 +74,10 @@
 @mixin title {
   font-family: "Montserrat", sans-serif;
   font-size: 4.7rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-lilac-2);
   letter-spacing: 0.12rem;
-  text-shadow: var(--color-lilac-2) 1px 0.5px 8px;
+  text-shadow: var(--color-lilac-2) 1px 0.5px 4px;
   text-align: center;
 }
 

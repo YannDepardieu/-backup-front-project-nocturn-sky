@@ -4,6 +4,7 @@ import classnames from "classnames";
 import { BiUserCircle } from "react-icons/bi";
 
 import authContext from "../../contexts/AuthContext";
+import constellationContext from "../../contexts/ConstellationContext";
 import { filterName } from "../../utils/filterName";
 import { fetchSearchOptions, fetchConstellation } from "../../utils/fetchApi";
 
@@ -22,6 +23,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const { isConnected, disconnectUser } = useContext(authContext);
+  const { setOpenedConstellation } = useContext(constellationContext);
 
   const closeMenu = () => {
     setMenuOpened(false);
@@ -90,9 +92,12 @@ function Header() {
                       <li
                         className="Header-Search-Option"
                         key={`Header-Search-Option--${option.name}--${index}`}
-                        onClick={() => setSearchValue(option.name)}
+                        onClick={() => {
+                          setSearchValue("");
+                          fetchConstellation(option.id, setOpenedConstellation);
+                        }}
                       >
-                        <a href="">{option.name}</a>
+                        {option.name}
                       </li>
                     ))}
                   </ul>
