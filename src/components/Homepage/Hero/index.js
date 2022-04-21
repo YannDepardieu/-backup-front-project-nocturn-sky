@@ -12,12 +12,7 @@ const Hero = () => {
           Trouvez les constellations visibles sur votre localisation et leur
           mythologie.
         </strong>
-        <br></br>
-        Partager des histoires au tour des étoiles est une raison de plus pour
-        apprécier les qualités d'un beau ciel nocture à l'heure où la pollution
-        lumineuse devient un fléau.
       </p>
-      <p className=" Hero-Text"></p>
 
       <ArrowDown href="#Myth" />
     </section>

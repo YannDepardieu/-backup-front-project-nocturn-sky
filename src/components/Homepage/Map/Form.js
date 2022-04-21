@@ -45,25 +45,27 @@ const Form = () => {
     <div className="Map-Form-Container">
       <div className="Block Map-Form">
         <div className="Map-Form-left">
-          <input
-            autoComplete="off"
-            title="Saisissez votre adresse complète"
-            className="Input"
-            name="address"
-            type="text"
-            placeholder="1 rue Dupont, 75000 Paris, FRANCE"
-            value={address}
-            onChange={({ currentTarget }) => {
-              setAddress(currentTarget.value);
-            }}
-          />
-          <button
-            title="Cherchez les constellations visibles depuis votre adresse"
-            className="Button"
-            onClick={apiLocation}
-          >
-            Chercher
-          </button>
+          <div className="Map-Form-LookAddress">
+            <input
+              autoComplete="off"
+              title="Saisissez votre adresse complète"
+              className="Input LookAddress"
+              name="address"
+              type="text"
+              placeholder="1 rue Dupont, 75000 Paris, FRANCE"
+              value={address}
+              onChange={({ currentTarget }) => {
+                setAddress(currentTarget.value);
+              }}
+            />
+            <button
+              title="Cherchez les constellations visibles depuis votre adresse"
+              className="Button LookAddress"
+              onClick={apiLocation}
+            >
+              Chercher
+            </button>
+          </div>
           <div className="Map-Form-row">
             <input
               title="Changez la date et l'heure pour montrer les constellations visibles"

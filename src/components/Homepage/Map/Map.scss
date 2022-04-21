@@ -6,6 +6,19 @@
     margin-bottom: 2rem;
     flex-direction: row;
 
+    &-LookAddress {
+      width: 100%;
+      display: flex;
+
+      .Input .LookAddress {
+        width: 70%;
+        border-radius: 20px, 0, 0, 20px;
+      }
+      .Button .LookAddress {
+        width: 30%;
+      }
+    }
+
     &-row {
       display: flex;
       align-items: stretch;
@@ -34,6 +47,5 @@
     display: flex;
     justify-content: center;
     max-width: 60rem;
-    // height: 100%;
   }
 }
