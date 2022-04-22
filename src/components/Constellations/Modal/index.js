@@ -9,6 +9,9 @@ import {
 import constellationContext from "../../../contexts/ConstellationContext";
 import authContext from "../../../contexts/AuthContext";
 import { baseURL } from "../../../utils/axios";
+import { postFavConstellation } from "../../../utils/fetchApi";
+import { deleteFavConstellation } from "../../../utils/fetchApi";
+import { getFavConstellations } from "../../../utils/fetchApi";
 
 import "./Modal.scss";
 
@@ -20,18 +23,41 @@ const ConstellationModal = () => {
   const { openedConstellation, setOpenedConstellation } =
     useContext(constellationContext);
 
+  let favIds = [];
+  const getAllFavsConstellations = (data) => {
+    // console.log(data);
+    if (data) {
+      data.forEach((constellation) => {
+        favIds.push(constellation.id);
+      });
+    }
+
+    // const favs = favIds.filter((id) => id === openedConstellation.id);
+    // console.log(favs);
+  };
+
+  const addFavs = async (constId) => {
+    await postFavConstellation(constId);
+  };
+
+  const removeFavs = async (constId) => {
+    await deleteFavConstellation(constId);
+    setFavorited();
+  };
+
   useEffect(() => {
     if (openedConstellation) {
       setTimeout(() => {
         setIsOpened(true);
       }, 200);
     }
+    getFavConstellations(getAllFavsConstellations);
   }, [openedConstellation]);
 
   // Si aucune constellation n'est ouverte (cliquée pour la modal),
   // on return null pour ne pas afficher la modal.
   if (!openedConstellation) {
-    document.querySelector('html').classList.remove('no-scroll');
+    document.querySelector("html").classList.remove("no-scroll");
     return null;
   }
 
@@ -43,14 +69,11 @@ const ConstellationModal = () => {
     }, 200);
   };
 
-  document.querySelector('html').classList.add('no-scroll');
+  document.querySelector("html").classList.add("no-scroll");
 
   return (
     <div
-      className={classNames(
-        "Modal",
-        { "Modal--opened": isOpened },
-      )}
+      className={classNames("Modal", { "Modal--opened": isOpened })}
       onClick={({ target, currentTarget }) => {
         if (currentTarget === target) {
           handleCloseConstellation();
@@ -58,10 +81,7 @@ const ConstellationModal = () => {
       }}
     >
       <div className="Block Detail-Block">
-        <a
-          className="Detail-Modal-Close"
-          onClick={handleCloseConstellation}
-        >
+        <a className="Detail-Modal-Close" onClick={handleCloseConstellation}>
           <AiOutlineCloseCircle />
         </a>
         <h3 className="Title Title--small Detail-Block-Title">
@@ -78,8 +98,8 @@ const ConstellationModal = () => {
             </figcaption>
           </figure>
           <div className="Detail-Description">
-            {
-              openedConstellation.myths !== null && openedConstellation.myths.map((e) => {
+            {openedConstellation.myths !== null &&
+              openedConstellation.myths.map((e) => {
                 return (
                   <React.Fragment key={e.id}>
                     <h2 className="Detail-Description-Title"> Mythe :</h2>
@@ -88,8 +108,7 @@ const ConstellationModal = () => {
                     </p>
                   </React.Fragment>
                 );
-              })
-            }
+              })}
             {Boolean(openedConstellation.history) && (
               <>
                 <h3 className="Detail-Description-Title">Histoire :</h3>
@@ -109,15 +128,25 @@ const ConstellationModal = () => {
           </div>
         </div>
 
-        {isConnected && favorited && (
+        {isConnected && !favorited && (
           <AiFillHeart
-            onClick={() => setFavorited(!favorited)}
+            onClick={() => {
+              console.log(favIds);
+              console.log("favorite");
+              // setFavorited(!favorited);
+              // removeFavs(openedConstellation.id);
+            }}
             className="Detail-Modal-Favorite Detail-Modal-Favorite--favorited"
           />
         )}
-        {isConnected && !favorited && (
+        {isConnected && (
           <AiOutlineHeart
-            onClick={() => setFavorited(!favorited)}
+            onClick={() => {
+              console.log(favIds);
+              console.log("not favorite");
+              // setFavorited(!favorited);
+              // addFavs(openedConstellation.id);
+            }}
             className="Detail-Modal-Favorite"
           />
         )}
