@@ -16,7 +16,7 @@
   backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: .2s ease-in-out opacity;
+  transition: 0.2s ease-in-out opacity;
 
   &--opened {
     opacity: 1;
@@ -38,9 +38,13 @@
     &-Block {
       @include glass-effect;
       margin: 6rem auto;
-      height: 26rem;
+      height: 27rem;
       display: block;
-      background: rgba(7, 6, 46, 0.45);
+      background: linear-gradient(
+        180deg,
+        rgba(129, 124, 249, 0.35),
+        rgba(106, 101, 245, 0.15)
+      );
 
       &-Title {
         margin-bottom: 1rem;

@@ -10,12 +10,16 @@
       width: 100%;
       display: flex;
 
-      .Input .LookAddress {
+      .Input.LookAddress {
         width: 70%;
-        border-radius: 20px, 0, 0, 20px;
+        border-radius: 20px 0 0 20px;
+        margin-right: 0;
       }
-      .Button .LookAddress {
+      .Button.LookAddress {
         width: 30%;
+        padding-left: 0.5rem;
+        border-radius: 0 20px 20px 0;
+        margin-left: 0;
       }
     }
 

@@ -21,6 +21,7 @@ const TodayMyth = () => {
   }
 
   const constellation = randomMyth;
+  // console.log(constellation);
 
   return (
     <section id="Myth" className="Section Myth">

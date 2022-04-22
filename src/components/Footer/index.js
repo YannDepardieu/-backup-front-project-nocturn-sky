@@ -39,8 +39,14 @@ function Footer() {
       </div>
       <p className="Footer-Bottom">
         Cette application a été dévéloppée grâce à la librairie
-        <a href="https://github.com/ofrohn/d3-celestial"> D3-Celestial</a> d'
-        <a href="https://twitter.com/olaffrohn">Olaf Frohn</a>.
+        <a target="_blank" href="https://github.com/ofrohn/d3-celestial">
+          {" "}
+          D3-Celestial
+        </a>{" "}
+        d'
+        <a target="_blank" href="https://twitter.com/olaffrohn">
+          Olaf Frohn
+        </a>
       </p>
     </div>
   );

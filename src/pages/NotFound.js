@@ -13,7 +13,9 @@ const NotFound = () => {
 
   return (
     <main className="Main NotFound">
-      <h1 className="card404">404</h1>
+      <h1 className="card404">
+        <strong>404</strong>lost in space !
+      </h1>
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -28,7 +30,7 @@ const NotFound = () => {
             // size: "cover",
           },
           interactivity: {
-            detectsOn: "canvas",
+            detectsOn: "window",
             events: {
               onHover: {
                 enable: true,
@@ -44,32 +46,28 @@ const NotFound = () => {
               connect: {
                 distance: 800,
                 line_linked: {
-                  opacity: 0.7,
+                  opacity: 0.5,
                 },
-                radius: 80,
+                radius: 60,
               },
             },
           },
           particles: {
             color: {
-              value: ["e5dff8", "9f98ca", "8479b9"],
+              value: ["cddbe8", "e3e8cd", "e8cde0"],
             },
             links: {
               enable: false,
             },
             number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 180,
+              value: 500,
             },
             opacity: {
-              value: 0.7,
+              value: 0.8,
               random: true,
               anim: {
                 enable: true,
-                speed: 1,
+                speed: 1.5,
                 opacity_min: 0.1,
                 sync: false,
               },
@@ -82,12 +80,12 @@ const NotFound = () => {
               },
             },
             size: {
-              value: { min: 0.5, max: 3.5 },
+              value: { min: 0.1, max: 2.7 },
               random: true,
               anim: {
                 enable: true,
                 speed: 1,
-                size_min: 0.6,
+                size_min: 0.2,
                 sync: false,
               },
             },

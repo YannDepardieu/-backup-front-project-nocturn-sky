@@ -20,6 +20,12 @@
 .card404 {
   @include title;
   @include card;
+  backdrop-filter: blur(9px);
+  font-size: 3rem;
   padding: 5rem;
   z-index: 1;
+
+  strong {
+    font-size: 4rem;
+  }
 }

@@ -87,14 +87,14 @@ export const fetchRandomMyth = (saveRandomMyth) => {
 
 export const fetchConstellation = (id, saveConstellation) => {
   axios
-  .get(`/constellation/${Number(id)}`)
-  .then(({ data }) => {
-     saveConstellation(data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+    .get(`/constellation/${Number(id)}`)
+    .then(({ data }) => {
+      saveConstellation(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 export const getAddress = async (address) => {
   try {
@@ -111,18 +111,43 @@ export const getAddress = async (address) => {
   } catch (error) {
     console.log(error);
   }
-  // axios
-  //   .get(`/geocoding/forward/`, {
-  //     params: {
-  //       address: address,
-  //     },
-  //   })
-  //   .then(({ data }) => {
-  //     return data;
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
+};
+
+export const postFavConstellation = async (constellation_id) => {
+  try {
+    const response = await axios.post(
+      `/constellation/favorite`,
+      {
+        constellation_id: constellation_id,
+      },
+      {
+        headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log("errors", error.message);
+  }
+};
+
+export const deleteFavConstellation = async (id) => {
+  try {
+    const response = await axios.delete(`/constellation/favorite/${id}`, {
+      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    return response;
+  } catch (error) {
+    console.log("errors", error.message);
+  }
+};
+
+export const getFavConstellations = async (saveConstellations) => {
+  axios
+    .get(`/constellation/favorite`, {
+      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+    .then(({ data }) => saveConstellations(data))
+    .catch((error) => {});
 };
 
 export const fetchApi = {
@@ -133,6 +158,9 @@ export const fetchApi = {
   fetchRandomMyth,
   fetchConstellation,
   getAddress,
+  postFavConstellation,
+  deleteFavConstellation,
+  getFavConstellations,
 };
 
 export default fetchApi;
