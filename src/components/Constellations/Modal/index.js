@@ -9,9 +9,10 @@ import {
 import constellationContext from "../../../contexts/ConstellationContext";
 import authContext from "../../../contexts/AuthContext";
 import { baseURL } from "../../../utils/axios";
-import { postFavConstellation } from "../../../utils/fetchApi";
-import { deleteFavConstellation } from "../../../utils/fetchApi";
-import { getFavConstellations } from "../../../utils/fetchApi";
+import {
+  postFavConstellation,
+  deleteFavConstellation,
+} from "../../../utils/fetchApi";
 
 import "./Modal.scss";
 
@@ -23,36 +24,24 @@ const ConstellationModal = () => {
   const { openedConstellation, setOpenedConstellation } =
     useContext(constellationContext);
 
-  let favIds = [];
-  const getAllFavsConstellations = (data) => {
-    // console.log(data);
-    if (data) {
-      data.forEach((constellation) => {
-        favIds.push(constellation.id);
-      });
-    }
-
-    // const favs = favIds.filter((id) => id === openedConstellation.id);
-    // console.log(favs);
-  };
-
-  const addFavs = async (constId) => {
-    await postFavConstellation(constId);
-  };
-
-  const removeFavs = async (constId) => {
-    await deleteFavConstellation(constId);
-    setFavorited();
-  };
-
   useEffect(() => {
     if (openedConstellation) {
+      setFavorited(openedConstellation.favorite);
+
       setTimeout(() => {
         setIsOpened(true);
       }, 200);
     }
-    getFavConstellations(getAllFavsConstellations);
   }, [openedConstellation]);
+
+  const handleFavs = () => {
+    setFavorited(!favorited);
+    if (favorited) {
+      deleteFavConstellation(openedConstellation.id);
+    } else {
+      postFavConstellation(openedConstellation.id);
+    }
+  };
 
   // Si aucune constellation n'est ouverte (cliquée pour la modal),
   // on return null pour ne pas afficher la modal.
@@ -128,28 +117,22 @@ const ConstellationModal = () => {
           </div>
         </div>
 
-        {isConnected && !favorited && (
-          <AiFillHeart
-            onClick={() => {
-              console.log(favIds);
-              console.log("favorite");
-              // setFavorited(!favorited);
-              // removeFavs(openedConstellation.id);
-            }}
-            className="Detail-Modal-Favorite Detail-Modal-Favorite--favorited"
-          />
-        )}
-        {isConnected && (
-          <AiOutlineHeart
-            onClick={() => {
-              console.log(favIds);
-              console.log("not favorite");
-              // setFavorited(!favorited);
-              // addFavs(openedConstellation.id);
-            }}
-            className="Detail-Modal-Favorite"
-          />
-        )}
+        {isConnected &&
+          (favorited ? (
+            <AiFillHeart
+              onClick={() => {
+                handleFavs();
+              }}
+              className="Detail-Modal-Favorite Detail-Modal-Favorite--favorited"
+            />
+          ) : (
+            <AiOutlineHeart
+              onClick={() => {
+                handleFavs();
+              }}
+              className="Detail-Modal-Favorite"
+            />
+          ))}
       </div>
     </div>
   );

@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react';
-import { fetchContentEntity } from '../../../utils/fetchApi';
+import { useEffect, useState } from "react";
+import {
+  fetchContentEntity,
+  fetchFavConstellation,
+} from "../../../utils/fetchApi";
 
-import Constellation from '../Constellation';
-import Loading from '../../Loading';
+import Constellation from "../Constellation";
+import Loading from "../../Loading";
 
-import './List.scss';
+import "./List.scss";
 
 const ConstellationsList = () => {
   const [constellations, setConstellations] = useState([]);
+  const [favoriteList, setFavoriteList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSetConstellations = (constellationsData) => {
@@ -16,7 +20,8 @@ const ConstellationsList = () => {
   };
 
   useEffect(() => {
-    fetchContentEntity('constellation', handleSetConstellations);
+    fetchContentEntity("constellation", handleSetConstellations);
+    fetchFavConstellation(setFavoriteList);
     setIsLoading(true);
   }, []);
 
@@ -27,6 +32,11 @@ const ConstellationsList = () => {
         <Constellation
           key={`Constellations-Item--${index}`}
           constellation={constellation}
+          isFav={
+            favoriteList.find((favorite) => favorite.id === constellation.id)
+              ? true
+              : false
+          }
         />
       ))}
     </ul>

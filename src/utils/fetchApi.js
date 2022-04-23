@@ -141,13 +141,17 @@ export const deleteFavConstellation = async (id) => {
   }
 };
 
-export const getFavConstellations = async (saveConstellations) => {
+export const fetchFavConstellation = async (callback) => {
   axios
     .get(`/constellation/favorite`, {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     })
-    .then(({ data }) => saveConstellations(data))
-    .catch((error) => {});
+    .then(({ data }) => {
+      callback(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const fetchApi = {
@@ -160,7 +164,7 @@ export const fetchApi = {
   getAddress,
   postFavConstellation,
   deleteFavConstellation,
-  getFavConstellations,
+  fetchFavConstellation,
 };
 
 export default fetchApi;

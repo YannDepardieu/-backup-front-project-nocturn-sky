@@ -6,12 +6,18 @@ import constellationContext from "../../../contexts/ConstellationContext";
 
 import "./Constellation.scss";
 
-const Constellation = ({ constellation }) => {
+const Constellation = ({ constellation, isFav }) => {
   const { setOpenedConstellation } = useContext(constellationContext);
+
+  const decoratedConstellation = {
+    ...constellation,
+    favorite: isFav,
+  };
+
   return (
     <li
       className="Constellations-Item"
-      onClick={() => setOpenedConstellation(constellation)}
+      onClick={() => setOpenedConstellation(decoratedConstellation)}
     >
       <img
         className="Constellations-Item-Image"
