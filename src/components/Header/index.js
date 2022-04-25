@@ -8,15 +8,9 @@ import constellationContext from "../../contexts/ConstellationContext";
 import { filterName } from "../../utils/filterName";
 import {
   fetchSearchOptions,
-  fetchConstellation,
   fetchFavConstellation,
+  fetchContentEntity,
 } from "../../utils/fetchApi";
-
-// import {
-//   AiOutlineCloseCircle,
-//   AiFillHeart,
-//   AiOutlineHeart,
-// } from "react-icons/ai";
 
 import "./Header.scss";
 
@@ -24,9 +18,9 @@ function Header() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOptions, setSearchOptions] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
-  // const [submittedConstellation, setSubmittedConstellation] = useState([]);
-  // const [isOpen, setIsOpen] = useState(false);
+  const [constellations, setConstellations] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  // const [searchBarOpen, setSearchBarOpen] = useState(false);
   const { isConnected, disconnectUser } = useContext(authContext);
   const { setOpenedConstellation } = useContext(constellationContext);
 
@@ -38,7 +32,13 @@ function Header() {
     setMenuOpened(!menuOpened);
   };
 
+  const handleSetConstellations = (constellationsData) => {
+    setConstellations(constellationsData);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
+    fetchContentEntity("constellation", handleSetConstellations);
     fetchSearchOptions(setSearchOptions);
     fetchFavConstellation(setFavoriteList);
     return () => {
@@ -46,6 +46,10 @@ function Header() {
       setMenuOpened(false);
     };
   }, []);
+
+  // useEffect(() => {
+  //   fetchFavConstellation(setFavoriteList);
+  // }, [searchBarOpen]);
 
   let options = [];
 
@@ -55,22 +59,23 @@ function Header() {
     );
   }
 
-  const findConstellation = (event) => {
+  const stopDefault = (event) => {
     event.preventDefault();
-    // fetchConstellation(options[0].id, setSubmittedConstellation);
-    // setIsOpen(true);
+    // setSearchBarOpen(true);
   };
 
-  // const handleIsOpen = () => {
-  //   setIsOpen(false);
-  // };
-
-  const handleConstellation = (data) => {
-    const isFav = favoriteList.find((favorite) => favorite.id === data.id)
+  const handleFavConstellation = (optionId) => {
+    const foundConst = constellations.find(
+      (constellation) => constellation.id === optionId
+    );
+    // console.log("ma constellation ", foundConst);
+    // console.log("mes favoris", favoriteList);
+    const isFav = favoriteList.find((favorite) => favorite.id === optionId)
       ? true
       : false;
+    // console.log("is favorite ", isFav);
     const decoratedConstellation = {
-      ...data,
+      ...foundConst,
       favorite: isFav,
     };
     setOpenedConstellation(decoratedConstellation);
@@ -134,7 +139,7 @@ function Header() {
                 />
               </svg>
             </NavLink>
-            <form onSubmit={findConstellation}>
+            <form onSubmit={stopDefault}>
               <label className="Header-Search" htmlFor="header-search">
                 <input
                   autoComplete="off"
@@ -153,7 +158,7 @@ function Header() {
                         key={`Header-Search-Option--${option.name}--${index}`}
                         onClick={() => {
                           setSearchValue("");
-                          fetchConstellation(option.id, handleConstellation);
+                          handleFavConstellation(option.id);
                         }}
                       >
                         {option.name}
@@ -203,14 +208,14 @@ function Header() {
                 {/* Liens visibles uniquement si l'utilisateur est connecté */}
                 {isConnected && (
                   <>
-                    <li
+                    {/* <li
                       className="Header-Menu-Item"
                       onClick={() => {
                         closeMenu();
                       }}
                     >
                       Mes constellations
-                    </li>
+                    </li> */}
                     <li
                       className="Header-Menu-Item"
                       onClick={() => {
