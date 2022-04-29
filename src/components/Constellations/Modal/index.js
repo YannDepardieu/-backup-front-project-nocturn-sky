@@ -12,6 +12,7 @@ import { baseURL } from "../../../utils/axios";
 import {
   postFavConstellation,
   deleteFavConstellation,
+  fetchFavConstellation,
 } from "../../../utils/fetchApi";
 
 import "./Modal.scss";
@@ -21,8 +22,12 @@ const ConstellationModal = () => {
   const [isOpened, setIsOpened] = useState(false);
 
   const { isConnected } = useContext(authContext);
-  const { openedConstellation, setOpenedConstellation } =
-    useContext(constellationContext);
+  const {
+    openedConstellation,
+    setOpenedConstellation,
+    favoriteList,
+    setFavoriteList,
+  } = useContext(constellationContext);
 
   useEffect(() => {
     if (openedConstellation) {
@@ -35,12 +40,26 @@ const ConstellationModal = () => {
   }, [openedConstellation]);
 
   const handleFavs = () => {
-    setFavorited(!favorited);
-    if (favorited) {
+    const favCopy = JSON.parse(JSON.stringify(favoriteList));
+    const isFav = favoriteList.find(
+      (fav) => fav.name === openedConstellation.name
+    );
+
+    if (isFav) {
+      const filteredFav = favCopy.filter(
+        (fav) => fav.name !== openedConstellation.name
+      );
+      setFavoriteList(filteredFav);
       deleteFavConstellation(openedConstellation.id);
     } else {
+      favCopy.push(openedConstellation);
+      setFavoriteList(favCopy);
       postFavConstellation(openedConstellation.id);
     }
+
+    setTimeout(() => {
+      fetchFavConstellation(setFavoriteList);
+    }, 200);
   };
 
   // Si aucune constellation n'est ouverte (cliquée pour la modal),
@@ -118,7 +137,7 @@ const ConstellationModal = () => {
         </div>
 
         {isConnected &&
-          (favorited ? (
+          (favoriteList.find((fav) => fav.name === openedConstellation.name) ? (
             <AiFillHeart
               onClick={() => {
                 handleFavs();

@@ -4,8 +4,11 @@ const constellationContext = createContext();
 
 export const ConstellationProvider = ({ children }) => {
   const [openedConstellation, setOpenedConstellation] = useState(null);
+  const [favoriteList, setFavoriteList] = useState([]);
 
   const constellation = {
+    favoriteList,
+    setFavoriteList,
     openedConstellation,
     setOpenedConstellation,
   };

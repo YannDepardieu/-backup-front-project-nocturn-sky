@@ -17,12 +17,13 @@ import "./Header.scss";
 function Header() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOptions, setSearchOptions] = useState([]);
-  const [favoriteList, setFavoriteList] = useState([]);
+  // const [favoriteList, setFavoriteList] = useState([]);
   const [constellations, setConstellations] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   // const [searchBarOpen, setSearchBarOpen] = useState(false);
   const { isConnected, disconnectUser } = useContext(authContext);
-  const { setOpenedConstellation } = useContext(constellationContext);
+  const { setOpenedConstellation, favoriteList, setFavoriteList } =
+    useContext(constellationContext);
 
   const closeMenu = () => {
     setMenuOpened(false);
