@@ -1,0 +1,55 @@
+@import "../../../../public/celestial/celestial";
+
+.Homepage .Map {
+  &-Form {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    flex-direction: row;
+
+    &-LookAddress {
+      width: 100%;
+      display: flex;
+
+      .Input.LookAddress {
+        width: 70%;
+        border-radius: 20px 0 0 20px;
+        margin-right: 0;
+      }
+      .Button.LookAddress {
+        width: 30%;
+        padding-left: 0.5rem;
+        border-radius: 0 20px 20px 0;
+        margin-left: 0;
+      }
+    }
+
+    &-row {
+      display: flex;
+      align-items: stretch;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+
+    &-right {
+      .Button {
+        height: 100%;
+      }
+    }
+  }
+  &-InteractiveMap {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    max-width: 60rem;
+  }
+}
