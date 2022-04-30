@@ -1,0 +1,66 @@
+@import "../../styles/mixins";
+
+.Footer {
+  color: var(--color-lilac-2);
+  position: relative;
+  // padding-top: 3rem;
+  border-top: 1.3px solid var(--color-lilac-transp);
+  font-weight: 400;
+
+  &-Sections {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    padding: 3rem 3rem 6rem 3rem;
+
+    &-Section {
+      line-height: 1.5rem;
+
+      &-Title {
+        @include subtitle;
+        text-align: left;
+        font-size: 1.3rem;
+        padding-bottom: 0.4rem;
+        margin-bottom: 0.4rem;
+      }
+
+      &-Link {
+        @include link;
+        padding-left: 0.5rem;
+      }
+
+      &-Content {
+        text-align: justify;
+      }
+    }
+
+    .Description {
+      width: 85%;
+      max-width: 25rem;
+    }
+    .Plan {
+      width: 15%;
+      // padding-left: 2rem;
+      & * {
+        text-align: left;
+      }
+    }
+  }
+
+  &-Bottom {
+    background-color: var(--color-lilac-light-transp);
+    color: var(--color-violet-deep);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+    text-align: center;
+    font-style: italic;
+
+    a {
+      @include link;
+      color: var(--color-lilac-2);
+    }
+  }
+}

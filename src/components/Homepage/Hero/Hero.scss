@@ -1,0 +1,29 @@
+@import "../../../styles/mixins";
+
+.Homepage .Hero {
+  &-Title {
+    margin: 3.5rem;
+  }
+
+  &-Text {
+    color: #9fa4d6;
+    letter-spacing: 0.05rem;
+    padding: 3rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    position: absolute;
+    // margin-top: auto;
+    // margin-bottom: auto;
+    width: 100%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-Intro {
+      font-weight: 600;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      text-align: center;
+    }
+  }
+}
